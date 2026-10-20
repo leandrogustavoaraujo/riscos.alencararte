@@ -1,0 +1,1073 @@
+<!DOCTYPE html><html lang="pt-BR" class="stuck"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coleção: 100 Riscos Católicos | Riscos para Bordar à Mão · Alencar Arte</title>
+<meta name="description" content="100 riscos católicos para bordar à mão: Nossa Senhora, santos, Sagrado Coração, medalhas e orações. Um risco por página A4, já dentro do círculo do bastidor de 20 cm, com uso comercial liberado. Por Fernanda Alencar, do ateliê Alencar Arte.">
+<link rel="icon" type="image/svg+xml" href="images/favicon-monograma-a.svg">
+<link rel="canonical" href="https://riscos.rabeloarte.com.br/catolicos-pacotes">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coleção: 100 Riscos Católicos | Riscos para Bordar à Mão · Alencar Arte">
+<meta property="og:description" content="Riscos católicos desenhados por quem borda de verdade, já no tamanho do bastidor e prontos para imprimir.">
+<meta property="og:url" content="https://riscos.rabeloarte.com.br/catolicos-pacotes">
+<meta property="og:image" content="images/peca-nossa-senhora-ana-erico.webp">
+<meta name="theme-color" content="#F4EDE2" id="tc">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<!-- Velocidade (10/10/2026), sem mudar nada do visual: o pixel sai antes de tudo (connect rate),
+     a foto do topo vem no tamanho que a tela mostra (600/860 px; a de 1100 só em tela retina) e as
+     fontes são servidas daqui, sem a ida ao Google que travava a primeira pintura (sem preload:
+     o CSS já está na página e o preload delas só disputava a rede com a foto e o pixel). -->
+<link rel="preconnect" href="https://www.facebook.com">
+<!-- a 1ª pintura espera o topo inteiro chegar (até a seção #previas): sem o CSS do Google segurando a
+     tela, o celular pintava o topo pela metade e ele pulava quando o resto chegava. Navegador sem suporte ignora. -->
+<link rel="expect" href="#previas" blocking="render">
+<link rel="preload" as="image" imagesrcset="images/bordado-035-600.webp 600w, images/bordado-035-860.webp 860w, images/bordado-035.webp 1100w" imagesizes="(max-width: 979px) min(282px, 61.6vw, 26.4svh), (min-width: 1600px) 520px, 464px" fetchpriority="high">
+
+<!-- ===== Meta Pixel + Conversions API =====
+     Cada evento sai do navegador (fbq) e do servidor (/api/capi) com o MESMO
+     event_id: o Meta desduplica e conta uma vez só. O token de acesso mora em
+     META_CAPI_TOKEN na Vercel e nunca aparece aqui.
+     Fica no topo do <head> de propósito: o "landing page view" do anúncio só conta quando
+     o PageView sai, e no fim da página ele disputava a rede com fotos e fontes (no 4G lento
+     saía aos 9 s). Os botões da Hotmart ganham o InitiateCheckout quando o HTML termina. -->
+<script async="" src="js/fbevents.js"></script><script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1631923811324377');
+
+(function(){
+  // Essencial R$ 27 (riscos + aula dos pontos) é o padrão; o botão com data-plano="completo" sai com R$ 97
+  const PRODUTO={content_name:'Colecao 100 Riscos Catolicos',content_ids:['santas-de-linha'],content_type:'product',value:27,currency:'BRL'};
+  const id=()=>(self.crypto&&crypto.randomUUID?crypto.randomUUID():'e'+Date.now()+Math.random().toString(36).slice(2));
+  const ler=n=>{const m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):''};
+  const fbclid=new URLSearchParams(location.search).get('fbclid')||'';
+
+  // o _fbp só existe depois que o fbevents.js roda; espera até 2s por ele para o
+  // evento de servidor sair com o mesmo identificador do evento do navegador
+  function comCookie(cb,tentativa){
+    if(ler('_fbp')||(tentativa||0)>10) return cb();
+    setTimeout(()=>comCookie(cb,(tentativa||0)+1),200);
+  }
+
+  function servidor(nome,evento_id,custom){
+    const corpo=JSON.stringify({event_name:nome,event_id:evento_id,event_source_url:location.href,
+      fbp:ler('_fbp'),fbc:ler('_fbc'),fbclid:fbclid,custom_data:custom||{}});
+    try{
+      if(navigator.sendBeacon&&navigator.sendBeacon('/api/capi',new Blob([corpo],{type:'application/json'})))return;
+      fetch('/api/capi',{method:'POST',headers:{'Content-Type':'application/json'},body:corpo,keepalive:true}).catch(()=>{});
+    }catch(e){}
+  }
+
+  function rastro(nome,custom){
+    const evento_id=id();
+    try{fbq('track',nome,custom||{},{eventID:evento_id})}catch(e){}
+    comCookie(()=>servidor(nome,evento_id,custom));
+  }
+
+  rastro('PageView');
+
+  // todo CTA que leva para a Hotmart dispara InitiateCheckout, marcando de qual
+  // posição da página o clique saiu (o mesmo src que já vai na URL do checkout)
+  function botoes(){
+    document.querySelectorAll('a[href*="pay.wiapy.com"]').forEach(function(a){
+      a.addEventListener('click',function(){
+        let posicao='sem-src';
+        try{posicao=new URL(a.href).searchParams.get('src')||posicao}catch(e){}
+        var comp=a.dataset.plano==='completo';
+        rastro('InitiateCheckout',Object.assign({},PRODUTO,{content_category:posicao},comp?{value:97,content_name:'Colecao 100 Riscos Catolicos + Curso'}:{}));
+      },{passive:true});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',botoes);else botoes();
+})();
+</script>
+
+<!-- =====================================================================
+     Página dos 2 planos (à parte do funil atual, que segue em /).
+     Checkouts Hotmart (?src= por posição): Essencial R$ 27 = P107876447D (produto 8651666),
+     Completo R$ 97 = I107876781I (combo 8651808). Só os 2 cards levam ao checkout;
+     o botão do hero, o do topo e o do fim descem para os planos (#comprar).
+     Preço: o que se paga são os riscos (De R$ 97) e, no Completo, riscos + curso (De R$ 194).
+     Aula Exclusiva dos 6 pontos, Guia de Cores e o módulo de vendas do curso aparecem sempre como BÔNUS.
+     ===================================================================== -->
+
+<style>
+/* ---------- fontes (servidas daqui; antes vinham do Google) ----------
+   Mesmos arquivos do Google (subconjunto "latin", eixos inteiros): desenho idêntico, conferido pixel a pixel.
+   O Fraunces ainda foi enxugado para os caracteres do português (270 KB → 238 KB) sem tocar em glifo nem
+   métrica (scripts/planos/subconjunto-pt.py). Texto novo com letra de fora (ñ, è, ø…): gerar de novo.
+   As famílias "… fb" são a fonte do sistema com a medida da fonte da marca (largura do título, do texto
+   e dos botões do topo no celular, medida no navegador, e altura da linha): enquanto a fonte carrega
+   o texto já ocupa o mesmo espaço e o topo não pula (CLS). O unicode-range delas = só os caracteres que
+   a fonte da marca tem, então depois que ela chega nenhuma letra usa o fallback: o visual final é o
+   mesmo. iPhone/Mac = Iowan e Helvetica Neue; Windows = Georgia e Arial; Android = Noto Serif e Roboto. */
+@font-face{font-family:"Fraunces";font-style:normal;font-weight:300 900;font-display:swap;src:url(fonts/fraunces-normal-v1.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Fraunces";font-style:italic;font-weight:300 900;font-display:swap;src:url(fonts/fraunces-italic-v1.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Instrument Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/instrument-sans-normal-v1.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Instrument Sans";font-style:italic;font-weight:400 600;font-display:swap;src:url(fonts/instrument-sans-italic-v1.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Fraunces fb i";font-weight:100 500;src:local("Iowan Old Style Roman"),local("IowanOldStyle-Roman");size-adjust:105.81%;ascent-override:92.43%;descent-override:24.1%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7,U+A9-AB,U+AE,U+B0-B3,U+B5-B7,U+B9-C3,U+C7,U+C9-CA,U+CD,U+D3-D5,U+D7,U+DA,U+DC,U+E0-E3,U+E7,U+E9-EA,U+ED,U+F3-F5,U+F7,U+FA,U+FC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Fraunces fb i";font-weight:600 900;src:local("Iowan Old Style Bold"),local("IowanOldStyle-Bold");size-adjust:99.96%;ascent-override:97.84%;descent-override:25.51%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7,U+A9-AB,U+AE,U+B0-B3,U+B5-B7,U+B9-C3,U+C7,U+C9-CA,U+CD,U+D3-D5,U+D7,U+DA,U+DC,U+E0-E3,U+E7,U+E9-EA,U+ED,U+F3-F5,U+F7,U+FA,U+FC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Fraunces fb i";font-style:italic;font-weight:100 900;src:local("Iowan Old Style Italic"),local("IowanOldStyle-Italic");size-adjust:118.54%;ascent-override:82.5%;descent-override:21.51%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7,U+A9-AB,U+AE,U+B0-B3,U+B5-B7,U+B9-C3,U+C7,U+C9-CA,U+CD,U+D3-D5,U+D7,U+DA,U+DC,U+E0-E3,U+E7,U+E9-EA,U+ED,U+F3-F5,U+F7,U+FA,U+FC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Fraunces fb g";font-weight:100 500;src:local("Georgia");size-adjust:106.71%;ascent-override:91.65%;descent-override:23.9%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7,U+A9-AB,U+AE,U+B0-B3,U+B5-B7,U+B9-C3,U+C7,U+C9-CA,U+CD,U+D3-D5,U+D7,U+DA,U+DC,U+E0-E3,U+E7,U+E9-EA,U+ED,U+F3-F5,U+F7,U+FA,U+FC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Fraunces fb g";font-weight:600 900;src:local("Georgia Bold"),local("Georgia-Bold");size-adjust:93.3%;ascent-override:104.82%;descent-override:27.33%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7,U+A9-AB,U+AE,U+B0-B3,U+B5-B7,U+B9-C3,U+C7,U+C9-CA,U+CD,U+D3-D5,U+D7,U+DA,U+DC,U+E0-E3,U+E7,U+E9-EA,U+ED,U+F3-F5,U+F7,U+FA,U+FC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Fraunces fb g";font-style:italic;font-weight:100 900;src:local("Georgia Italic"),local("Georgia-Italic");size-adjust:99.64%;ascent-override:98.15%;descent-override:25.59%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7,U+A9-AB,U+AE,U+B0-B3,U+B5-B7,U+B9-C3,U+C7,U+C9-CA,U+CD,U+D3-D5,U+D7,U+DA,U+DC,U+E0-E3,U+E7,U+E9-EA,U+ED,U+F3-F5,U+F7,U+FA,U+FC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Fraunces fb n";font-weight:100 500;src:local("Noto Serif"),local("Noto Serif Regular"),local("NotoSerif-Regular");size-adjust:99.51%;ascent-override:98.28%;descent-override:25.63%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7,U+A9-AB,U+AE,U+B0-B3,U+B5-B7,U+B9-C3,U+C7,U+C9-CA,U+CD,U+D3-D5,U+D7,U+DA,U+DC,U+E0-E3,U+E7,U+E9-EA,U+ED,U+F3-F5,U+F7,U+FA,U+FC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Fraunces fb n";font-weight:600 900;src:local("Noto Serif Bold"),local("NotoSerif-Bold");size-adjust:94.35%;ascent-override:103.66%;descent-override:27.03%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7,U+A9-AB,U+AE,U+B0-B3,U+B5-B7,U+B9-C3,U+C7,U+C9-CA,U+CD,U+D3-D5,U+D7,U+DA,U+DC,U+E0-E3,U+E7,U+E9-EA,U+ED,U+F3-F5,U+F7,U+FA,U+FC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Fraunces fb n";font-style:italic;font-weight:100 900;src:local("Noto Serif Italic"),local("NotoSerif-Italic");size-adjust:97.44%;ascent-override:100.37%;descent-override:26.17%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7,U+A9-AB,U+AE,U+B0-B3,U+B5-B7,U+B9-C3,U+C7,U+C9-CA,U+CD,U+D3-D5,U+D7,U+DA,U+DC,U+E0-E3,U+E7,U+E9-EA,U+ED,U+F3-F5,U+F7,U+FA,U+FC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Instrument fb h";font-weight:100 500;src:local("Helvetica Neue"),local("HelveticaNeue");size-adjust:99.19%;ascent-override:97.79%;descent-override:25.2%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+304,U+308,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2039-203A,U+20AC,U+2122,U+2191,U+2193,U+2212}
+@font-face{font-family:"Instrument fb h";font-weight:600 900;src:local("Helvetica Neue Bold"),local("HelveticaNeue-Bold");size-adjust:96.53%;ascent-override:100.49%;descent-override:25.9%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+304,U+308,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2039-203A,U+20AC,U+2122,U+2191,U+2193,U+2212}
+@font-face{font-family:"Instrument fb a";font-weight:100 500;src:local("Arial"),local("ArialMT");size-adjust:100.04%;ascent-override:96.96%;descent-override:24.99%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+304,U+308,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2039-203A,U+20AC,U+2122,U+2191,U+2193,U+2212}
+@font-face{font-family:"Instrument fb a";font-weight:600 900;src:local("Arial Bold"),local("Arial-BoldMT");size-adjust:96.6%;ascent-override:100.41%;descent-override:25.88%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+304,U+308,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2039-203A,U+20AC,U+2122,U+2191,U+2193,U+2212}
+@font-face{font-family:"Instrument fb r";font-weight:100 500;src:local("Roboto"),local("Roboto Regular"),local("Roboto-Regular");size-adjust:101.31%;ascent-override:95.75%;descent-override:24.68%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+304,U+308,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2039-203A,U+20AC,U+2122,U+2191,U+2193,U+2212}
+@font-face{font-family:"Instrument fb r";font-weight:600 900;src:local("Roboto Bold"),local("Roboto-Bold");size-adjust:102.58%;ascent-override:94.56%;descent-override:24.37%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+304,U+308,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2039-203A,U+20AC,U+2122,U+2191,U+2193,U+2212}
+
+:root{
+  --ink:#231208;
+  --ink-2:#4A3223;
+  --ink-3:#6F5847;
+  --paper:#F4EDE2;
+  --paper-2:#FBF6EE;
+  --paper-3:#EBE1D2;
+  --terra:#B4471C;
+  --terra-lit:#CB5A28;
+  --terra-deep:#7E2F10;
+  --olive:#4C5C32;
+  --gold:#C08A2E;
+  --gift:#315344;
+  --line:rgba(35,18,8,.14);
+  --surface:var(--paper-2);
+  --ann-h:38px;
+  --nav-h:60px;
+  --display:"Fraunces","Fraunces fb i","Fraunces fb g","Fraunces fb n","Iowan Old Style",Georgia,serif;
+  --sans:"Instrument Sans","Instrument fb h","Instrument fb a","Instrument fb r","Helvetica Neue",Arial,sans-serif;
+  --wonk:"SOFT" 24,"WONK" 1;
+  --pad:clamp(18px,4vw,40px);
+  --rad:4px;
+}
+@media(min-width:980px){:root{--ann-h:38px;--nav-h:78px;
+  /* no título grande do computador (~65 px) o Fraunces já tem a largura da Iowan/Georgia sem ajuste;
+     o ajuste dos "fb" é para o título do celular (~30 px), onde o Fraunces fica ~6% mais largo */
+  --display:"Fraunces","Iowan Old Style",Georgia,serif}}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--ink);transition:background .25s ease;scroll-padding-top:calc(var(--nav-h) + 12px)}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  font-family:var(--sans);background:var(--paper);color:var(--ink);
+  font-size:17px;line-height:1.6;font-weight:400;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--terra);color:#fff}
+:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+
+/* grão sobre a página inteira */
+body::after{
+  content:"";position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding-inline:var(--pad)}
+@media(min-width:1600px){.wrap{max-width:1340px}}
+
+/* ---------- tipografia ---------- */
+h1,h2,h3,h4,.display{
+  font-family:var(--display);font-variation-settings:var(--wonk);
+  font-weight:600;line-height:1.02;letter-spacing:-.022em;text-wrap:balance;
+}
+h1{font-size:clamp(2.05rem,5.4vw,4.05rem);font-weight:500;line-height:1.0}
+h2{font-size:clamp(1.85rem,3.8vw,2.85rem);font-weight:500;line-height:1.05}
+h3{font-size:clamp(1.14rem,1.45vw,1.34rem);font-weight:600;line-height:1.18;letter-spacing:-.01em}
+.it{font-style:italic;font-variation-settings:"SOFT" 60,"WONK" 1}
+.terra{color:var(--terra)}
+p{color:var(--ink-2);text-wrap:pretty}
+p+p{margin-top:.85em}
+strong{font-weight:600;color:var(--ink)}
+
+.lead{font-size:clamp(1.05rem,1.6vw,1.2rem);line-height:1.55;color:var(--ink-2);text-wrap:pretty}
+@media(min-width:1600px){body{font-size:18px}}
+
+/* ---------- botões ---------- */
+.btn{
+  --bg:var(--terra);
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.65rem;
+  background:var(--bg);color:#FFF6EC;font-family:var(--sans);font-weight:600;
+  font-size:1.02rem;letter-spacing:-.01em;padding:1.12rem 2.2rem;border:0;border-radius:100px;
+  cursor:pointer;text-align:center;line-height:1.2;isolation:isolate;
+  box-shadow:0 1px 0 rgba(255,255,255,.25) inset,0 10px 24px -12px rgba(126,47,16,.75);
+  transition:transform .22s cubic-bezier(.2,.8,.3,1),box-shadow .22s ease,background .22s ease,opacity .25s ease;
+}
+.btn:hover{background:var(--terra-lit);transform:translateY(-2px);box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 18px 30px -14px rgba(126,47,16,.8)}
+.btn:active{transform:translateY(0)}
+.btn:focus-visible,.gnav:focus-visible{outline:3px solid var(--gift);outline-offset:4px}
+.dark a:focus-visible{outline-color:var(--paper)}
+.btn .arw{transition:transform .22s ease}
+.btn:hover .arw{transform:translateX(4px)}
+.btn.lg{font-size:1.08rem;padding:1.28rem 2.6rem;width:100%}
+@media(min-width:560px){.btn.lg{width:auto;min-width:390px}}
+/* no celular o botão já ocupa a largura toda: menos respiro lateral para "Quero os 100 riscos" caber numa linha */
+@media(max-width:559px){.btn.lg{padding-inline:clamp(.9rem,4.2vw,2.6rem)}}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(35,18,8,.3);box-shadow:none}
+.btn.ghost:hover{background:var(--paper-3);color:var(--ink)}
+.micro{font-size:.85rem;color:var(--ink-3);margin-top:.9rem;line-height:1.45}
+.micro b{color:var(--ink-2);font-weight:600}
+
+/* ---------- bônus: a mesma etiqueta em todo lugar ---------- */
+.bonus{display:inline-block;vertical-align:.14em;margin-right:.45rem;font-family:var(--sans);font-style:normal;
+  font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1;
+  padding:.32rem .55rem .28rem;border-radius:999px;background:var(--gift);color:#FFF7EA;white-space:nowrap}
+.gratis{font-style:normal;font-weight:700;color:var(--olive)}
+
+/* ---------- topo ---------- */
+.ann{background:var(--ink);color:#EADFD0;font-size:.78rem;letter-spacing:.01em;text-align:center;height:calc(var(--ann-h) + env(safe-area-inset-top,0px));line-height:var(--ann-h);padding:env(safe-area-inset-top,0px) var(--pad) 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ann .só-desk{display:none}
+@media(min-width:720px){.ann .só-desk{display:inline}}
+.ann b{color:#fff;font-weight:600}
+.ann .dot{color:var(--terra-lit);margin:0 .5rem}
+
+/* faixa da status bar: opaca e na cor do header */
+.sat,html::before{content:"";position:fixed;top:0;left:0;right:0;z-index:190;pointer-events:none;transition:background .25s ease;
+  height:env(safe-area-inset-top,0px);background:var(--ink);opacity:1}
+html.stuck .sat,html.stuck::before{background:var(--paper)}
+html.stuck,html.stuck body{background:var(--paper)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:80;background:transparent;border-bottom:1px solid transparent;transition:border-color .3s ease,box-shadow .3s ease}
+.nav::before{content:"";position:absolute;left:0;right:0;top:0;bottom:0;background:var(--paper);z-index:-1}
+.nav.stuck::before{top:-260px}
+.nav.stuck{box-shadow:0 10px 28px -22px rgba(35,18,8,.9);border-bottom-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:var(--nav-h)}
+.nav img{height:clamp(30px,3.2vw,40px);width:auto}
+.nav-in>a:first-child{display:flex;align-items:center;min-height:44px}
+.nav .btn{height:38px;padding:0 1.15rem;font-size:.85rem}
+@media(min-width:900px){.nav .btn{height:46px;padding:0 1.6rem;font-size:.94rem}}
+/* com os planos na tela, o botão do topo sai: os dois cards já são a escolha */
+.nav.nos-planos .btn{opacity:0;pointer-events:none}
+.só-mob{display:inline}
+.só-desk-i{display:none}
+@media(min-width:900px){.só-mob{display:none}.só-desk-i{display:inline}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding:clamp(.8rem,2.2vw,2.1rem) 0 clamp(1.8rem,2.8vw,2.6rem)}
+.hero::before{
+  content:"";position:absolute;top:-24%;right:-18%;width:76vw;height:76vw;max-width:900px;max-height:900px;
+  background:radial-gradient(circle at 50% 50%,rgba(203,90,40,.16),transparent 62%);pointer-events:none;
+}
+.hero-in{position:relative;display:grid;gap:clamp(.7rem,4vw,3rem);align-items:center}
+/* no mobile a peça bordada entra logo depois da headline, antes do CTA */
+@media(max-width:979px){
+  .hero{display:flex;align-items:center;min-height:calc(100svh - var(--ann-h) - var(--nav-h) - env(safe-area-inset-top,0px));padding-block:clamp(.6rem,2.2svh,1.6rem)}
+  .hero-txt{display:contents}
+  .hero .hero-in{width:100%;justify-items:center;text-align:center;gap:0}
+  .hero .hero-in .stack{max-width:min(320px,70vw,30svh);aspect-ratio:1/.98;margin-inline:auto}
+  /* a 1a dobra cresce com a tela: o vw manda na largura, o svh impede de estourar a altura */
+  .hero .hero-txt h1{font-size:clamp(1.82rem,min(7.5vw,4.6svh),2.8rem)}
+  .hero .hero-txt .lead{font-size:clamp(.97rem,min(3.6vw,2svh),1.16rem)}
+  .hero .cta-row .btn.lg{font-size:clamp(1rem,min(3.8vw,2svh),1.12rem);padding-block:clamp(1.08rem,1.75svh,1.32rem)}
+  .hero .trust .faces img{width:clamp(34px,8.8vw,41px);height:clamp(34px,8.8vw,41px)}
+  .hero .trust-txt{font-size:clamp(.8rem,2.75vw,.92rem)}
+  .hero .trust-txt b{font-size:clamp(.84rem,2.95vw,.98rem)}
+  .hero .hero-txt h1{order:2}
+  .hero .stack{order:3;margin-block:clamp(.5rem,1.8svh,1.1rem)}
+  .hero .hero-txt .lead{order:4;margin:0 auto clamp(.9rem,2svh,1.3rem);max-width:22.644em} /* = 34ch da Instrument Sans ("0" = .666em); em não muda quando a fonte troca */
+  .hero .hero-txt .cta-row{order:5;align-items:center;width:100%}
+  .hero .hero-txt .trust{order:6;justify-content:center;width:100%;max-width:32rem;margin-top:clamp(1rem,2.4svh,1.6rem);padding-top:clamp(.9rem,2svh,1.3rem)}
+  .hero .cta-row .micro{text-align:center;margin-top:.6rem}
+  .hero .hero-gifts{justify-content:center;font-size:clamp(.9rem,min(3.4vw,1.9svh),.94rem);margin-bottom:clamp(.75rem,1.9svh,1.1rem)}
+}
+/* celular baixo (SE com a barra do Safari, Android pequeno): título, peça, bônus e botão na 1a tela */
+@media(max-width:979px) and (max-height:620px){
+  .hero .hero-in .stack{max-width:min(320px,70vw,25svh)}
+  .hero .stack{margin-block:.45rem .6rem}
+  .hero .hero-detail{display:none}
+  .hero .hero-txt .lead{margin-bottom:.7rem}
+  .hero .hero-gifts{row-gap:.25rem;margin-bottom:.55rem}
+}
+@media(min-width:980px){
+  .hero{display:flex;align-items:center;min-height:calc(100svh - var(--ann-h) - var(--nav-h));padding-block:clamp(1.6rem,3.4vh,3.2rem)}
+  .hero-in{width:100%;grid-template-columns:1.02fr .98fr;gap:clamp(2.5rem,5vw,4.5rem)}
+  /* botão do hero mais baixo (a altura do celular) e da largura exata da linha de bônus */
+  .hero .hero-txt .cta-row{width:max-content;max-width:100%;align-items:stretch}
+  .hero .hero-txt .cta-row .btn.lg{min-width:0;padding-block:1rem;font-size:1.04rem}
+  /* linha de bônus um pouco mais estreita (o botão acompanha a largura dela) */
+  .hero .hero-gifts{font-size:.88rem;column-gap:.5rem}
+  .hero .hero-gifts .bonus{letter-spacing:.1em}
+  .hero .hero-gifts-list .mais{margin:0 .25rem}
+}
+.hero h1 .it{color:var(--terra)}
+.hero .lead{margin:1.15rem 0 1.6rem;max-width:25.308em;font-size:clamp(1.06rem,1.35vw,1.18rem)}
+.hero .cta-row{display:flex;flex-direction:column;align-items:flex-start;gap:.5rem}
+/* bônus no hero: parte da oferta, ANTES do botão, numa linha só (pílula + nomes), sem caixas que pareçam botão */
+.hero-gifts{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .6rem;margin:0 0 .85rem;font-size:.98rem;line-height:1.3;color:var(--ink-2)}
+.hero-gifts .bonus{margin-right:0;letter-spacing:.1em}
+.hero-gifts-list{font-weight:600;white-space:nowrap}
+.hero-gifts-list .mais{color:var(--gift);font-weight:700;margin:0 .3rem}
+
+.trust{display:flex;align-items:center;gap:.85rem;margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--line)}
+.faces{display:flex}
+.faces img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);margin-left:-11px;background:var(--paper-3)}
+.faces img:first-child{margin-left:0}
+.trust-txt{font-size:.86rem;color:var(--ink-3);line-height:1.35}
+.trust-txt b{display:block;color:var(--ink);font-weight:600;font-size:.9rem}
+.stars{color:var(--gold);letter-spacing:.06em;font-size:.8rem}
+
+/* composição de fotos */
+.stack{position:relative;justify-self:center;width:100%;max-width:460px;aspect-ratio:1/1.08}
+@media(min-width:980px){.stack{max-width:min(500px,max(340px,50vh))}}
+@media(min-width:1600px){.stack{max-width:min(560px,max(380px,54vh))}}
+.stack figure{position:absolute;overflow:hidden;border-radius:var(--rad);box-shadow:0 26px 50px -28px rgba(35,18,8,.55),0 2px 0 rgba(255,255,255,.5)}
+.stack img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.f1 img{object-position:50% 39%}
+.f1{inset:0 12% 14% 0;transform:rotate(-2.2deg)}
+.f2{width:41%;aspect-ratio:.8;right:-2%;bottom:-3%;transform:rotate(3.4deg)}
+
+/* ---------- seções ---------- */
+section{padding:clamp(3.1rem,5.6vw,5.6rem) 0}
+#comprar{scroll-margin-top:calc(var(--nav-h) + 18px - clamp(3.1rem,5.6vw,5.6rem))}
+.dark{background:var(--ink);color:var(--paper)}
+.dark h1,.dark h2,.dark h3{color:var(--paper-2)}
+.dark p{color:#C9B8A6}
+.dark .sh .terra{color:#EFA77D}
+.soft{background:var(--paper-2);--surface:#FFFDF8}
+.sh{max-width:640px}
+.sh .lead{margin-top:1.15rem;max-width:56ch}
+.sh.mid{margin-inline:auto;text-align:center}
+.sh.mid .lead{margin-inline:auto}
+/* em tela larga o cabeçalho da seção abre em duas colunas: título e lead lado a lado */
+@media(min-width:1080px){
+  .sh:not(.mid):has(.lead){max-width:none;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2rem,4vw,4.5rem);align-items:end}
+  .sh:not(.mid):has(.lead) h2{max-width:18ch}
+  .sh:not(.mid) .lead{margin-top:0;max-width:46ch;padding-bottom:.4rem}
+  /* .sh.headstack: cabeçalho que continua empilhado em tela larga, quando a coluna da direita já é usada logo abaixo */
+  .sh.headstack:not(.mid):has(.lead){max-width:640px;display:block}
+  .sh.headstack:not(.mid):has(.lead) h2{max-width:none}
+  .sh.headstack:not(.mid) .lead{margin-top:1.15rem;max-width:52ch;padding-bottom:0}
+}
+
+/* dores */
+.pains{display:grid;gap:0;margin-top:clamp(1.3rem,2.2vw,1.9rem);border-top:1px dashed rgba(255,255,255,.2)}
+.dark.compacta{padding-block:clamp(2.5rem,4.4vw,4.2rem)}
+@media(min-width:760px){.pains{grid-template-columns:1fr 1fr;column-gap:clamp(2rem,5vw,4rem)}}
+.pain{padding:1.05rem 0;border-bottom:1px dashed rgba(255,255,255,.2)}
+@media(min-width:760px){.pain:nth-last-child(-n+2){border-bottom:0}}
+@media(max-width:759px){.pain:last-child{border-bottom:0}}
+.pain h3{margin-bottom:.3rem}
+.pain p{font-size:.95rem;line-height:1.55}
+
+/* galeria */
+.gal{display:flex;gap:.85rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:1.6rem var(--pad) .4rem;margin-inline:calc(var(--pad)*-1);scrollbar-width:none}
+.gal::-webkit-scrollbar{display:none}
+.gal figure{position:relative;flex:0 0 74%;max-width:330px;scroll-snap-align:center;border-radius:var(--rad);overflow:hidden;background:var(--paper-3)}
+@media(min-width:700px){.gal figure{flex-basis:31%}}
+.gal img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.3,1)}
+.gal figure:hover img{transform:scale(1.045)}
+.gal-nota{margin-top:1.1rem;max-width:52ch}
+.gal-nav{display:none;justify-content:flex-end;gap:.6rem;margin-top:1.2rem}
+@media(min-width:980px){.gal-nav{display:flex}}
+.gnav{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:1.05rem;display:grid;place-items:center;cursor:pointer;transition:background .2s ease,border-color .2s ease,transform .2s ease}
+.gnav:hover{background:var(--ink);border-color:var(--ink);color:var(--paper-2)}
+.gnav:active{transform:scale(.94)}
+.gnav:disabled{opacity:.3;cursor:default;pointer-events:none}
+/* computador: 3 fotos inteiras dentro da largura da página, encaixando pela borda esquerda; a seta desliza 1 foto */
+@media(min-width:980px){
+  .gal{margin-inline:0;padding:1.6rem 0 .4rem;gap:1.25rem;scroll-padding-inline:0}
+  .gal figure{flex:0 0 calc((100% - 2.5rem)/3);max-width:none;scroll-snap-align:start}
+}
+.gal figcaption{position:absolute;inset:auto 0 0 0;font-size:.76rem;color:#fff;background:linear-gradient(0deg,rgba(35,18,8,.88),transparent);padding:2.4rem .85rem .75rem;font-weight:500}
+.gal figcaption b{display:block;font-weight:600;line-height:1.25}
+.gal figcaption span{display:block;font-size:.69rem;font-weight:400;opacity:.78;margin-top:.12rem}
+
+/* ---------- os bônus ---------- */
+.bns{display:grid;gap:clamp(1rem,1.8vw,1.4rem);margin-top:clamp(1.7rem,2.8vw,2.4rem)}
+.bn{display:grid;grid-template-columns:1fr;grid-template-rows:auto 1fr;background:var(--surface);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+.bn-media{min-width:0;height:clamp(180px,40vw,280px);overflow:hidden;background:#E9DFD0;isolation:isolate}
+.bn-media img{width:100%;height:100%;object-fit:cover}
+.bn.guia .bn-media{display:grid;place-items:center;padding:0;background:#FFF}
+.guide-art{padding:clamp(1rem,2.5vw,1.5rem)!important;container-type:inline-size}
+/* amostras pela largura do card: estreito (celular e 3 colunas do computador) = 2×2 com a bolinha ao lado do nome; largo (tablet) = as 4 em linha */
+.guide-swatches{display:grid;grid-template-columns:repeat(2,max-content);justify-content:space-evenly;width:100%;gap:1.2rem 1rem;gap:clamp(1rem,5.5cqi,1.6rem) clamp(.8rem,5cqi,2rem)}
+.guide-swatch{display:grid;grid-template-columns:max-content max-content;justify-content:start;column-gap:.65em;align-items:center;text-align:left;font-style:normal;color:var(--ink);font-size:.82rem;font-size:clamp(.72rem,4.4cqi,1rem)}
+.guide-swatch>:not(i){grid-column:2}
+.guide-swatch i{grid-column:1;grid-row:1/4;display:block;width:40px;height:40px;width:clamp(32px,13cqi,52px);height:clamp(32px,13cqi,52px);border-radius:50%;box-shadow:0 0 0 1px rgba(35,18,8,.12),0 6px 14px -10px rgba(35,18,8,.6)}
+.guide-swatch b{font-size:1em;line-height:1.2;white-space:nowrap}
+.guide-swatch small{font-size:.86em;line-height:1.3;color:var(--ink-2);white-space:nowrap}
+.guide-swatch em{font-size:.78em;line-height:1.3;color:var(--ink-3);font-style:normal;white-space:nowrap}
+/* 3 colunas apertadas (900–1099px): menos respiro em volta para as 2 colunas de amostras caberem */
+@media(min-width:860px) and (max-width:1099px){.guide-art{padding:.75rem!important}}
+@container (min-width:520px){
+  .guide-swatches{grid-template-columns:repeat(4,minmax(0,1fr));justify-content:stretch;gap:.75rem;width:100%;max-width:720px}
+  .guide-swatch{grid-template-columns:1fr;justify-items:center;text-align:center;font-size:clamp(.9rem,2.5cqi,1.12rem)}
+  .guide-swatch>:not(i){grid-column:1}
+  .guide-swatch i{grid-row:auto;width:clamp(48px,9cqi,68px);height:clamp(48px,9cqi,68px);margin-bottom:.7em}
+}
+.guide-swatch:nth-child(1) i{background:#35668B}.guide-swatch:nth-child(2) i{background:#406A3A}.guide-swatch:nth-child(3) i{background:#BC8D0E}.guide-swatch:nth-child(4) i{background:#B87748}
+.bn-t{padding:clamp(1.4rem,2.4vw,2rem)}
+.bn-onde{display:block;margin-top:.45rem;font-size:.8rem;font-weight:600;color:var(--ink-3)}
+.bn h3{margin:.6rem 0 .6rem;font-size:1.3rem}
+.bn p{font-size:.97rem}
+/* cada foto com o foco no que importa */
+.bn.aula .bn-media img{object-position:50% 50%}
+.bn.marketing .bn-media{background:#D8C3A7}
+.bn.marketing .bn-media img{object-position:50% 42%}
+@media(min-width:860px){
+  .bns{grid-template-columns:repeat(3,1fr)}
+  .bn-media{height:auto;aspect-ratio:3/2}
+  .bn.aula .bn-media img{object-position:50% 50%}
+}
+
+.midcta{text-align:center;margin-top:clamp(2.2rem,4vw,3.2rem);padding-top:clamp(1.9rem,3.4vw,2.8rem);border-top:1px dashed var(--line)}
+
+/* ---------- amostra da página do risco: as 2 folhas reais do entregável ---------- */
+/* na frente a página A4 do risco; atrás, deslocada para baixo, a página do Guia de Cores com a legenda à vista */
+.folhas{position:relative;width:min(100%,440px);aspect-ratio:1/1.25;margin-inline:auto}
+.folha{position:absolute;margin:0;width:76%;aspect-ratio:707/1000;background:#fff;border-radius:2px;overflow:hidden;
+  box-shadow:0 0 0 1px rgba(35,18,8,.06),0 2px 4px rgba(35,18,8,.06),0 26px 50px -28px rgba(35,18,8,.55)}
+.folha img{display:block;width:100%;height:100%}
+.folha-risco{left:0;top:0;z-index:2;transform:rotate(-1.2deg)}
+.folha-guia{right:0;bottom:0;z-index:1;transform:rotate(2.2deg)}
+.folhas-legenda{margin:clamp(1.9rem,3.4vw,2.6rem) auto 0;max-width:34rem;font-size:.8rem;line-height:1.7;color:var(--ink-3);text-align:center;text-wrap:balance}
+.legend{display:grid;gap:0;border-top:1px solid var(--line)}
+.legend li{list-style:none;padding:1.05rem .1rem;border-bottom:1px solid var(--line);font-size:.97rem;color:var(--ink-2);line-height:1.5}
+.legend strong{display:block;font-family:var(--display);font-variation-settings:var(--wonk);font-size:1.05rem;font-weight:600;margin-bottom:.18rem}
+/* título das folhas: "e com Guia de Cores" sempre na sua linha; a caixa abre até 18em para "Cada risco já no tamanho do bastidor" caber numa linha */
+.sh.largo,.sh.headstack.largo:not(.mid):has(.lead){max-width:none}
+.sh.largo h2,.sh.headstack.largo:not(.mid):has(.lead) h2{max-width:18em}
+.sh.largo h2 .it{display:block}
+/* numa coluna (celular e tablet) o título e o lead das folhas ficam no centro, alinhados às folhas e ao botão logo abaixo */
+@media(max-width:899px){.sh.largo{text-align:center}.sh.largo h2,.sh.largo .lead{margin-inline:auto}.sh.largo .lead{text-wrap:balance}}
+.split{display:grid;gap:clamp(2rem,3.4vw,3rem);align-items:center;margin-top:clamp(1.7rem,2.8vw,2.4rem)}
+@media(min-width:900px){.split{grid-template-columns:1fr 1fr}}
+.split .lead{margin-bottom:1.4rem}
+
+/* ---------- os dois planos ---------- */
+.offer-sec{position:relative;overflow:hidden}
+.offer-sec::before{content:"";position:absolute;inset:auto 50% -30% auto;transform:translateX(50%);width:120vw;height:60vw;background:radial-gradient(ellipse at 50% 100%,rgba(203,90,40,.22),transparent 60%);pointer-events:none}
+.offer-sec>.wrap{position:relative;z-index:1}
+.planos{position:relative;display:grid;gap:2.1rem;max-width:920px;margin:clamp(2.2rem,3.4vw,2.9rem) auto 0}
+.plano{position:relative;background:var(--paper-2);color:var(--ink);border-radius:6px;box-shadow:0 40px 80px -40px rgba(0,0,0,.6);display:flex;flex-direction:column}
+.plano h3,.plano b,.plano strong{color:var(--ink)}
+.dark .plano p{color:var(--ink-2)}
+/* no celular o Completo vem primeiro */
+.plano-c{order:-1;box-shadow:0 0 0 2px var(--terra),0 40px 80px -40px rgba(0,0,0,.6)}
+.selo{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);z-index:2;max-width:calc(100% - 16px);background:var(--terra);color:#FFF6EC;font-size:.8rem;font-weight:600;letter-spacing:.01em;white-space:nowrap;padding:.5rem 1.05rem;border-radius:999px;line-height:1.2;box-shadow:0 8px 18px -10px rgba(0,0,0,.6)}
+.card-top{padding:clamp(1.7rem,2.6vw,2.1rem) clamp(1.2rem,3vw,1.9rem) clamp(1rem,1.6vw,1.25rem);text-align:center}
+.plano-tag{display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:.6rem;line-height:1.3}
+.plano-e .plano-tag{color:var(--ink-3)}
+.pname{font-size:clamp(1.45rem,2.6vw,1.85rem);font-weight:500;line-height:1.18;margin-bottom:.7rem}
+/* Completo: "100 Riscos Católicos" e, na linha de baixo, o que vem a mais (no itálico terracota do título do hero) */
+.pname-mais{display:block;color:var(--terra)}
+.price{display:flex;align-items:flex-start;justify-content:center;gap:1.1rem}
+.price .de{font-size:1.05rem;color:var(--ink-3);text-decoration:line-through;padding-top:.95rem}
+.price .por{font-family:var(--display);font-variation-settings:var(--wonk);font-weight:600;font-size:clamp(3.4rem,8vw,4.2rem);line-height:.86;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.price .por sup{font-size:.36em;vertical-align:super;letter-spacing:0;margin-right:.1em}
+.dark .plano .price-note{display:flex;width:max-content;max-width:100%;align-items:center;justify-content:center;font-size:.9rem;color:#4E6759;margin:.95rem auto 0;padding:.3rem .75rem;border-radius:999px;background:#F1F6F2;border:1px solid #D4E2D7}
+.plano .price-note b{color:var(--gift)}
+.incl{list-style:none;padding:0 clamp(1.2rem,3vw,1.9rem)}
+.incl li{display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:start;padding:.62rem 0;border-top:1px solid var(--line);font-size:.94rem}
+.incl li svg{width:16px;height:16px;color:var(--olive);margin-top:.28rem;flex:none}
+.incl li>span>b{display:block;font-weight:600;line-height:1.3}
+.incl li>span>span{display:block;font-size:.84rem;color:var(--ink-3);line-height:1.4;margin-top:.15rem}
+.incl li.mais>span>b{color:var(--terra)}
+.incl li.gift{grid-template-columns:38px minmax(0,1fr);gap:.75rem;align-items:center}
+.bonus-thumb{width:38px;height:38px;object-fit:cover;border:1px solid rgba(35,18,8,.12);border-radius:7px;background:var(--paper-3);box-shadow:0 5px 12px -8px rgba(35,18,8,.55)}
+.palette-thumb{display:grid;grid-template-columns:repeat(4,6px);place-content:center;gap:2px;padding:0;background:#FFF;border:0;box-shadow:none}
+.palette-thumb i{display:block;width:6px;height:6px;border-radius:50%;box-shadow:0 0 0 1px rgba(35,18,8,.1)}
+.palette-thumb i:nth-child(1){background:#35668B}.palette-thumb i:nth-child(2){background:#406A3A}.palette-thumb i:nth-child(3){background:#BC8D0E}.palette-thumb i:nth-child(4){background:#B87748}
+.bonus-thumb.aula{object-position:50% 50%}
+.bonus-thumb.marketing{object-position:50% 50%}
+/* título de cada linha dos planos numa linha só, também no celular estreito: o texto e a pílula de bônus (em em) diminuem juntos */
+.incl li>span>b{font-size:clamp(.8rem,3.6vw,.94rem)}
+.incl .bonus{font-size:.72em;padding:.47em .81em .41em;margin-right:.66em}
+@media(max-width:349px){.incl li.gift{grid-template-columns:minmax(0,1fr)}.incl .bonus-thumb{display:none}}
+.card-btm{padding:clamp(1.1rem,2vw,1.4rem) clamp(1.2rem,3vw,1.9rem) clamp(1.3rem,2.4vw,1.7rem);text-align:center;border-top:1px solid var(--line)}
+.card-btm .btn.lg{width:100%;min-width:0;padding-inline:1rem}
+/* Padrão: com cor, mas abaixo do Completo (que fica com o terracota cheio, o selo e a borda forte) */
+.plano-e{box-shadow:0 0 0 1.5px rgba(180,71,28,.5),0 40px 80px -40px rgba(0,0,0,.6)}
+.plano-e .btn.ghost{color:var(--terra);border:2px solid var(--terra);background:rgba(180,71,28,.03)}
+.plano-e .btn.ghost:hover{background:var(--terra);color:#FFF6EC;border-color:var(--terra)}
+.pay{display:flex;align-items:center;justify-content:center;gap:.55rem;flex-wrap:wrap;margin-top:.9rem;font-size:.8rem;color:var(--ink-3)}
+@media(max-width:899px){.planos{max-width:460px}}
+/* cada plano mostra só o que inclui, sem linhas vazias para igualar alturas */
+@media(min-width:900px){
+  .planos{grid-template-columns:1fr 1fr;column-gap:clamp(1.2rem,2.4vw,1.8rem);align-items:start}
+  .plano-c{order:0}
+}
+
+/* depoimentos */
+.tests{display:grid;gap:1rem;margin-top:clamp(1.7rem,2.8vw,2.4rem)}
+@media(min-width:820px){.tests{grid-template-columns:repeat(3,1fr);gap:1.2rem}}
+.test{background:var(--surface);border:1px solid var(--line);border-radius:var(--rad);padding:1.5rem 1.6rem;display:flex;flex-direction:column;gap:1rem}
+.test .q{font-family:var(--display);font-variation-settings:var(--wonk);font-style:italic;font-size:1.1rem;line-height:1.42;color:var(--ink)}
+.test .who{display:flex;align-items:center;gap:.75rem;margin-top:auto;padding-top:.6rem;border-top:1px dashed var(--line)}
+.test .who img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex:none}
+.test .who b{display:block;font-size:.92rem;font-weight:600}
+.test .who span{font-size:.8rem;color:var(--ink-3)}
+.test .who .stars{color:var(--gold)}
+
+/* sobre a Fernanda (texto igual à /; foto menor, pedido de 10/10) */
+/* foto no formato original (860x715): no computador fica da altura do texto; numa coluna, bloco de 520px e foto até ~46% da tela */
+.about{display:grid;gap:clamp(2rem,4vw,3.4rem);align-items:center}
+@media(min-width:900px){.about{grid-template-columns:.86fr 1.14fr}}
+@media(max-width:899px){.about{justify-items:center}.about>*{width:100%;max-width:520px}}
+.about-img{position:relative;border-radius:var(--rad);overflow:hidden;box-shadow:0 30px 60px -34px rgba(35,18,8,.6)}
+.about-img img{width:100%;aspect-ratio:860/715;object-fit:cover;object-position:50% 40%}
+@media(max-width:899px){.about-img img{max-height:max(46svh,240px)}}
+.about .lead{margin-top:1.15rem}
+/* texto e números na escala da /planos: parágrafo = texto corrido (FAQ, bônus), número = h3 */
+.about p:not(.lead){font-size:.97rem;line-height:1.6}
+.about-img figcaption{position:absolute;left:0;bottom:0;right:0;background:linear-gradient(0deg,rgba(35,18,8,.85),transparent);color:#F4EDE2;font-size:.78rem;padding:2.6rem 1rem .85rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem;padding-top:1.6rem;border-top:1px dashed var(--line)}
+.stat b{display:block;font-family:var(--display);font-variation-settings:var(--wonk);font-size:clamp(1.14rem,1.45vw,1.34rem);font-weight:600;line-height:1.18;letter-spacing:-.01em}
+.stat span{font-size:.8rem;color:var(--ink-3);line-height:1.3;display:block;margin-top:.15rem}
+
+@media(max-width:560px){
+  .trust{gap:.7rem;justify-content:center;text-align:left}
+  .trust-txt{line-height:1.35;font-size:.82rem}
+  .trust-txt b{font-size:.86rem}
+  .faces img{width:34px;height:34px}
+  .stats{grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:.9rem}
+}
+
+/* faq */
+.faq{max-width:820px;margin:clamp(1.7rem,2.8vw,2.4rem) auto 0;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{
+  list-style:none;cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:1.2rem;
+  padding:1.3rem .3rem;font-family:var(--display);font-variation-settings:var(--wonk);
+  font-size:1.12rem;font-weight:600;line-height:1.3;transition:color .2s ease;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--terra)}
+.faq summary .pm{position:relative;width:18px;height:18px;flex:none;margin-top:.24rem}
+.faq summary .pm::before,.faq summary .pm::after{content:"";position:absolute;background:var(--terra);border-radius:2px;transition:transform .28s cubic-bezier(.2,.8,.3,1)}
+.faq summary .pm::before{inset:8px 0 auto 0;height:2px}
+.faq summary .pm::after{inset:0 8px auto 8px;width:2px;height:18px}
+.faq details[open] summary .pm::after{transform:rotate(90deg)}
+.faq .ans{overflow:hidden}
+.faq .ans p{padding:0 2.6rem 1.5rem .3rem;font-size:.97rem;color:var(--ink-2)}
+.faq details[open] .ans{animation:open .32s cubic-bezier(.2,.8,.3,1)}
+@keyframes open{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.fecho{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:clamp(2.2rem,4vw,3.2rem)}
+
+/* footer */
+footer{background:var(--ink);color:#B7A292;padding:2.6rem 0 3rem;border-top:1px solid rgba(255,255,255,.09);font-size:.8rem;line-height:1.6}
+footer img{height:clamp(28px,2.6vw,34px);width:auto;opacity:.9;margin-bottom:1.2rem}
+footer .legal{max-width:62ch;margin-top:.9rem;opacity:.9;font-size:.76rem;color:#9A8878}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+/* hero: card pequeno = a folha do mesmo risco, quadrada e inteira (padrão da LP de Natal) */
+.stack .f2{aspect-ratio:1;background:#fff}
+.stack .f1 img{object-position:50% 50%}
+</style>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XB2NT9W5Y9"></script></head>
+<body>
+
+<div class="sat" aria-hidden="true"></div>
+
+<div class="ann">100 riscos <span class="só-desk">católicos </span>de <s>R$ 97</s> por <b>R$ 27</b> <span class="dot">·</span> <b>+ 2 bônus grátis</b></div>
+
+<header class="nav stuck nos-planos" id="nav">
+  <div class="wrap nav-in">
+    <a href="#" aria-label="Alencar Arte"><img src="images/logo-alencar-arte.webp" alt="Alencar Arte" width="583" height="244"></a>
+    <a href="#comprar" class="btn" data-cta="nav"><span class="só-desk-i">Ver os pacotes</span><span class="só-mob">Ver pacotes</span></a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-in">
+    <div class="hero-txt">
+      <h1>100 riscos católicos prontos para <span class="it">transferir e bordar</span></h1>
+      <p class="lead">Nossa Senhora, santos, Sagrado Coração, medalhas e orações. <span class="hero-detail">Cada risco numa página A4, já dentro do círculo do bastidor de 20 cm.</span></p>
+      <div class="cta-row">
+        <p class="hero-gifts"><span class="bonus">+2 bônus grátis</span><span class="hero-gifts-list">Guia de Cores<span class="mais">+</span>Aula dos 6 pontos</span></p>
+        <a href="#comprar" class="btn lg" data-cta="hero">Quero os 100 riscos <span class="arw">→</span></a>
+      </div>
+      <div class="trust">
+        <div class="faces">
+          <img src="images/avatar-ana-paula.webp" alt="" width="160" height="160">
+          <img src="images/avatar-juliana-garcia.webp" alt="" width="160" height="160">
+          <img src="images/avatar-patricia-martins.webp" alt="" width="160" height="160">
+        </div>
+        <div class="trust-txt">
+          <span class="stars">★★★★★</span>
+          <b>Mais de 350 bordadeiras já compraram</b>
+          <span class="trust-detail">Peças enviadas para mais de 6 países</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack">
+      <figure class="f1"><img src="images/bordado-035.webp" srcset="images/bordado-035-600.webp 600w, images/bordado-035-860.webp 860w, images/bordado-035.webp 1100w" sizes="(max-width: 979px) min(282px, 61.6vw, 26.4svh), (min-width: 1600px) 520px, 464px" alt="Risco 35, Sagrada Família, bordado à mão no bastidor, com a folha do risco ao lado" width="1100" height="1100" fetchpriority="high"></figure>
+      <figure class="f2"><img src="images/aro-035.webp" alt="Página real da coleção: risco 35, Sagrada Família, o mesmo risco bordado ao lado" width="760" height="760"></figure>
+    </div>
+  </div>
+</section>
+
+<section id="previas">
+  <div class="wrap">
+    <div class="sh rv" style="transition-delay: 0ms;">
+      <h2>Veja os riscos <span class="it">já bordados</span></h2>
+      <p class="lead">Oito dos 100 riscos bordados no bastidor, com a folha do risco ao lado.</p>
+    </div>
+    <div class="gal" tabindex="0" role="region" aria-label="Galeria de riscos bordados">
+      <figure><img src="images/galeria-01-aparecida-v2.webp" alt="Nossa Senhora Aparecida bordada à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>01 · Nossa Senhora Aparecida</b></figcaption></figure>
+      <figure><img src="images/galeria-19-santa-teresinha-v2.webp" alt="Santa Teresinha das Rosas bordada à mão no bastidor, com frase em arco" width="720" height="900" loading="lazy"><figcaption><b>19 · Santa Teresinha das Rosas</b></figcaption></figure>
+      <figure><img src="images/galeria-94-anjinho-v2.webp" alt="Anjinho de guarda bordado à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>94 · Anjinho</b></figcaption></figure>
+      <figure><img src="images/galeria-35-sagrada-familia-v2.webp" alt="Sagrada Família bordada à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>35 · Sagrada Família</b></figcaption></figure>
+      <figure><img src="images/galeria-78-jesus-cruz-florida-v2.webp" alt="Jesus com a cruz florida bordado à mão, com a frase Toma tua cruz e siga-me" width="720" height="900" loading="lazy"><figcaption><b>78 · Jesus com a cruz florida</b></figcaption></figure>
+      <figure><img src="images/galeria-12-virgem-maria-v2.webp" alt="Virgem Maria da Medalha Milagrosa bordada à mão, com a oração em arco" width="720" height="900" loading="lazy"><figcaption><b>12 · Virgem Maria</b></figcaption></figure>
+      <figure><img src="images/galeria-56-sao-judas-tadeu-v2.webp" alt="São Judas Tadeu bordado à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>56 · São Judas Tadeu</b></figcaption></figure>
+      <figure><img src="images/galeria-27-medalha-sao-bento-v2.webp" alt="Medalha de São Bento bordada à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>27 · Medalha de São Bento</b></figcaption></figure>
+    </div>
+    <p class="micro gal-nota">O risco vem só no contorno: o ponto, a linha e as cores ficam à sua escolha.</p>
+    <div class="gal-nav">
+      <button class="gnav" type="button" data-dir="-1" aria-label="Ver peças anteriores" disabled="">←</button>
+      <button class="gnav" type="button" data-dir="1" aria-label="Ver próximas peças">→</button>
+    </div>
+  </div>
+</section>
+
+<section class="dark compacta">
+  <div class="wrap">
+    <div class="sh rv" style="transition-delay: 70ms;">
+      <h2>O problema nunca foi o ponto. <span class="it terra">Foi o risco.</span></h2>
+      <p class="lead">Você salva uma imagem no celular, imprime, passa pro tecido e descobre que aquilo era uma foto. E foto não se borda.</p>
+    </div>
+    <div class="pains">
+      <div class="pain rv" style="transition-delay: 140ms;"><h3>Sombra demais</h3><p>Degradê e brilho não viram linha.</p></div>
+      <div class="pain rv" style="transition-delay: 210ms;"><h3>O rosto trava</h3><p>Traço fino some, traço grosso muda a expressão.</p></div>
+      <div class="pain rv" style="transition-delay: 0ms;"><h3>Prega de manto</h3><p>Cada dobra vira uma linha a mais.</p></div>
+      <div class="pain rv" style="transition-delay: 70ms;"><h3>A encomenda recusada</h3><p>Você tem o ponto e o tempo. Falta o risco.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap">
+    <div class="sh headstack largo rv" style="transition-delay: 140ms;">
+      <h2>Cada risco já no tamanho do bastidor <span class="it">e com Guia de Cores</span></h2>
+      <p class="lead">Uma página A4 por risco, montada sempre do mesmo jeito.</p>
+    </div>
+    <div class="split">
+      <div class="rv" style="transition-delay: 210ms;">
+        <div class="folhas">
+          <figure class="folha folha-guia"><img src="images/guia-pdf-035.webp" srcset="images/guia-pdf-035.webp 707w, images/guia-pdf-035-1060.webp 1060w" sizes="(min-width:476px) 335px, calc(76vw - 28px)" alt="Página do Guia de Cores do risco 35, Sagrada Família, com as 5 linhas no pé: Anchor 268, 901, 68, 357 e 131 (DMC 3346, 680, 3687, 433 e 798)" width="707" height="1000" loading="lazy" decoding="async"></figure>
+          <figure class="folha folha-risco"><img src="images/guia-pdf-046.webp" srcset="images/guia-pdf-046.webp 707w, images/guia-pdf-046-1060.webp 1060w" sizes="(min-width:476px) 335px, calc(76vw - 28px)" alt="Página do Guia de Cores do risco 46, Sagrado Coração de Jesus, com as 3 linhas no pé: Anchor 901, 268 e 47 (DMC 680, 3346 e 321)" width="707" height="1000" loading="lazy" decoding="async"></figure>
+        </div>
+        <p class="folhas-legenda"><span class="bonus">Bônus</span> páginas reais do Guia de Cores: cada risco pintado, com as linhas no rodapé</p>
+      </div>
+      <div class="rv" style="transition-delay: 0ms;">
+        <ul class="legend">
+          <li><span><strong>Tamanho real.</strong> O círculo impresso é o bastidor de 20 cm. Para 16 cm, imprima em 80%.</span></li>
+          <li><span><strong>Contorno limpo.</strong> Só a linha que vai virar ponto: sem sombra, sem preenchimento e sem cinza.</span></li>
+          <li><span><strong>Folga para compor.</strong> O desenho não toma o aro inteiro. Sobra espaço para o nome, a data ou a guirlanda.</span></li>
+          <li><span><strong>Nome e número.</strong> Cada página traz a devoção escrita, para achar a santa sem abrir os 100 arquivos.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="midcta rv" style="transition-delay: 70ms;">
+      <a href="#comprar" class="btn lg" data-cta="meio">Quero os 100 riscos <span class="arw">→</span></a>
+      <p class="micro">A partir de R$ 27 <b>·</b> acesso imediato <b>·</b> 7 dias de garantia</p>
+    </div>
+  </div>
+</section>
+
+<section class="soft" id="bonus">
+  <div class="wrap">
+    <div class="sh mid rv" style="transition-delay: 140ms;">
+      <h2>E você ainda leva <span class="it terra">de bônus</span></h2>
+      <p class="lead">Sem pagar nada a mais por eles.</p>
+    </div>
+    <div class="bns">
+      <article class="bn guia rv" style="transition-delay: 210ms;">
+        <div class="bn-media guide-art" role="img" aria-label="Legenda real do Guia de Cores do risco 1, Nossa Senhora Aparecida: Anchor 979, 268, 901 e 1046 (DMC 312, 3346, 680 e 435)">
+          <div class="guide-swatches" aria-hidden="true">
+            <span class="guide-swatch"><i></i><b>Anchor 979</b><small>DMC 312</small><em>azul escuro</em></span>
+            <span class="guide-swatch"><i></i><b>Anchor 268</b><small>DMC 3346</small><em>verde-musgo</em></span>
+            <span class="guide-swatch"><i></i><b>Anchor 901</b><small>DMC 680</small><em>ouro escuro</em></span>
+            <span class="guide-swatch"><i></i><b>Anchor 1046</b><small>DMC 435</small><em>marrom claro</em></span>
+          </div>
+        </div>
+        <div class="bn-t">
+          <span class="bonus">Bônus</span>
+          <span class="bn-onde">Nos dois pacotes</span>
+          <h3>Guia de Cores</h3>
+          <p>Cada risco pintado na cor sugerida, com o número da linha Anchor e da DMC. Você chega no armarinho sabendo o que pedir.</p>
+        </div>
+      </article>
+      <article class="bn aula rv" style="transition-delay: 0ms;">
+        <div class="bn-media"><img src="images/bonus-aula-pontos-v5.webp" alt="Mãos bordando no bastidor os seis pontos da aula, identificados no tecido: ponto atrás, pirulito, haste, corrente, nó francês e o ponto cheio sendo feito" width="1200" height="596" loading="lazy" decoding="async"></div>
+        <div class="bn-t">
+          <span class="bonus">Bônus</span>
+          <span class="bn-onde">Nos dois pacotes</span>
+          <h3>Aula Exclusiva dos 6 pontos</h3>
+          <p>Seis vídeos com a Fernanda: ponto atrás, pirulito, haste, corrente, nó francês e cheio. Vendida sozinha por R$ 67.</p>
+        </div>
+      </article>
+      <article class="bn marketing rv" style="transition-delay: 70ms;">
+        <div class="bn-media"><img src="images/bonus-marketing-v4.webp" alt="Mão segurando o celular com o painel de vendas de um ateliê de bordados, ao lado de uma caixa com um bastidor bordado e um saquinho prontos para envio" width="1200" height="675" loading="lazy" decoding="async"></div>
+        <div class="bn-t">
+          <span class="bonus">Bônus</span>
+          <span class="bn-onde">Só no Pacote Completo</span>
+          <h3>Módulo de Marketing Digital e Vendas</h3>
+          <p>Para vender seus bordados pela internet: a vitrine na bio do Instagram, a oferta, o primeiro anúncio e as métricas.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="dark offer-sec" id="comprar">
+  <div class="wrap">
+    <div class="sh mid rv in" style="transition-delay: 140ms;">
+      <h2>Escolha o pacote ideal <span class="it terra">para você</span></h2>
+      <p class="lead">Pacote Padrão ou Completo: escolha o que combina com o seu momento.</p>
+    </div>
+
+    <div class="planos">
+      <article class="plano plano-e rv in" style="transition-delay: 210ms;">
+        <div class="card-top">
+          <span class="plano-tag">Pacote Padrão</span>
+          <h3 class="pname">100 Riscos Católicos</h3>
+          <div class="price"><span class="de">R$ 97</span><span class="por"><sup>R$</sup>27</span></div>
+          <p class="price-note"><b>R$ 0,27 por risco</b></p>
+        </div>
+        <ul class="incl">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg><span><b>100 riscos em PDF e PNG</b><span>Um por página A4, no bastidor de 20 cm</span></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg><span><b>Uso comercial e acesso vitalício</b><span>Borde e venda quantas peças quiser</span></span></li>
+          <li class="bonus-start gift"><span class="bonus-thumb palette-thumb" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><b><i class="bonus">Bônus</i>Guia de Cores</b><span>Linhas Anchor e DMC de cada risco</span></span></li>
+          <li class="gift"><img class="bonus-thumb aula" src="images/bonus-aula-pontos-thumb-v5.webp" alt="" width="38" height="38" loading="lazy"><span><b><i class="bonus">Bônus</i>Aula Exclusiva dos 6 pontos</b><span>Seis vídeos com a Fernanda · <s>R$ 67</s></span></span></li>
+        </ul>
+        <div class="card-btm">
+          <a href="https://pay.wiapy.com/6ad7b3fe23173d72243932bf" class="btn lg ghost" data-plano="essencial">Quero os 100 riscos <span class="arw">→</span></a>
+          <div class="pay">Acesso imediato · 7 dias de garantia</div>
+        </div>
+      </article>
+      <article class="plano plano-c rv in" style="transition-delay: 0ms;">
+        <span class="selo">Recomendado para aprender e vender</span>
+        <div class="card-top">
+          <span class="plano-tag">Pacote Completo</span>
+          <h3 class="pname">100 Riscos Católicos <span class="pname-mais it">+ Curso de Bordado</span></h3>
+          <div class="price"><span class="de">R$ 194</span><span class="por"><sup>R$</sup>97</span></div>
+          <p class="price-note">Curso completo por&nbsp;<b>R$ 70 a mais</b></p>
+        </div>
+        <ul class="incl">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg><span><b>Curso de bordado do zero ao avançado</b><span>8 módulos e 64 aulas com a Fernanda</span></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg><span><b>100 riscos em PDF e PNG</b><span>Um por página A4, no bastidor de 20 cm</span></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg><span><b>Uso comercial e acesso vitalício</b><span>Borde e venda quantas peças quiser</span></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg><span><b>Suporte exclusivo nas aulas</b><span>Sua dúvida respondida pela equipe da Fernanda</span></span></li>
+          <li class="bonus-start gift"><span class="bonus-thumb palette-thumb" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><b><i class="bonus">Bônus</i>Guia de Cores</b><span>Linhas Anchor e DMC de cada risco</span></span></li>
+          <li class="gift"><img class="bonus-thumb aula" src="images/bonus-aula-pontos-thumb-v5.webp" alt="" width="38" height="38" loading="lazy"><span><b><i class="bonus">Bônus</i>Aula Exclusiva dos 6 pontos</b><span>Já vem no curso, no módulo 02</span></span></li>
+          <li class="gift"><img class="bonus-thumb marketing" src="images/bonus-marketing-thumb-v4.webp" alt="" width="38" height="38" loading="lazy"><span><b><i class="bonus">Bônus</i>Marketing Digital e Vendas</b><span>Para vender pela internet</span></span></li>
+        </ul>
+        <div class="card-btm">
+          <a href="https://pay.wiapy.com/6ad7b4b016f0f5e301fe12f0" class="btn lg" data-plano="completo">Quero o curso + 100 riscos <span class="arw">→</span></a>
+          <div class="pay">Acesso imediato · 7 dias de garantia</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap about">
+    <figure class="about-img rv" style="transition-delay: 70ms;">
+      <img src="images/fernanda-alencar-bordando.webp" alt="Fernanda Alencar bordando à mão no ateliê" width="860" height="715" loading="lazy" decoding="async">
+      <figcaption>Fernanda Alencar, no ateliê em Uberlândia (MG)</figcaption>
+    </figure>
+    <div class="rv" style="transition-delay: 140ms;">
+      <h2>Eu sou a Fernanda, e bordo <span class="it">por encomenda</span></h2>
+      <p class="lead">O que eu faço todo dia é bordar à mão aquilo que as pessoas guardam para sempre: o nome do casal, a igreja onde casaram, o rosto de quem já se foi.</p>
+      <p>Santo é a parte mais delicada do ofício. Por isso eu não quis montar mais uma pasta de imagens tiradas da internet. Desenhei risco por risco pensando em como a linha se comporta, onde o traço engorda e onde o rosto se perde.</p>
+      <div class="stats">
+        <div class="stat"><b>Uberlândia</b><span>Minas Gerais</span></div>
+        <div class="stat"><b>+6 países</b><span>Peças enviadas</span></div>
+        <div class="stat"><b>À mão</b><span>Nenhuma máquina</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sh mid rv" style="transition-delay: 210ms;">
+      <h2>O que dizem as <span class="it">alunas da Fernanda</span></h2>
+      <p class="lead">Depoimentos de alunas do Curso Alencar Arte, o curso de bordado da Fernanda.</p>
+    </div>
+    <div class="tests">
+      <figure class="test rv" style="transition-delay: 0ms;"><p class="q">“O curso é completo, do básico ao avançado. Aprendi pontos que nunca consegui entender em outros tutoriais. Recomendo demais!”</p><figcaption class="who"><img src="images/avatar-ana-paula.webp" alt="" loading="lazy"><span><b>Ana Paula Ribeiro</b><span>Belo Horizonte (MG) · <span class="stars">★★★★★</span></span></span></figcaption></figure>
+      <figure class="test rv" style="transition-delay: 70ms;"><p class="q">“O curso me fez redescobrir minha paixão por trabalhos manuais. A didática da Fernanda é incrível, valeu cada minuto!”</p><figcaption class="who"><img src="images/avatar-juliana-garcia.webp" alt="" loading="lazy"><span><b>Juliana Garcia</b><span>Uberlândia (MG) · <span class="stars">★★★★★</span></span></span></figcaption></figure>
+      <figure class="test rv" style="transition-delay: 140ms;"><p class="q">“Bordar com a Fernanda é como ter uma amiga te ensinando com paciência e amor. Me ajudou num momento difícil da minha vida.”</p><figcaption class="who"><img src="images/avatar-patricia-martins.webp" alt="" loading="lazy"><span><b>Patrícia Martins</b><span>São Paulo (SP) · <span class="stars">★★★★★</span></span></span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap">
+    <div class="sh mid rv" style="transition-delay: 210ms;">
+      <h2>O que me perguntam <span class="it">antes de comprar</span></h2>
+    </div>
+    <div class="faq rv" style="transition-delay: 0ms;">
+      <details open=""><summary>O que eu recebo?<span class="pm"></span></summary><div class="ans"><p>No Padrão: os 100 riscos em PDF e em imagem, com 2 bônus, o Guia de Cores e a Aula Exclusiva dos 6 pontos. No Completo: os riscos, o Guia de Cores e o Curso de Bordado Alencar Arte inteiro, com suporte nas aulas.</p></div></details>
+      <details><summary>Qual a diferença entre os pacotes?<span class="pm"></span></summary><div class="ans"><p>O curso. O Padrão custa R$ 27 e o Completo, R$ 97: os R$ 70 a mais trazem os 8 módulos do curso da Fernanda, o de Marketing Digital e Vendas e o suporte da equipe nas aulas.</p></div></details>
+      <details><summary>Como eu recebo?<span class="pm"></span></summary><div class="ans"><p>O acesso chega no seu e-mail assim que o pagamento é aprovado. Na área de membros você baixa os riscos e assiste às aulas, no celular ou no computador.</p></div></details>
+      <details><summary>Preciso ter impressora?<span class="pm"></span></summary><div class="ans"><p>Não. Qualquer papelaria imprime. Peça em folha A4, no tamanho real (100%).</p></div></details>
+      <details><summary>Serve no meu bastidor?<span class="pm"></span></summary><div class="ans"><p>Os riscos vêm no tamanho do bastidor de 20 cm. Para 18 cm, imprima em 90%. Para 16 cm, em 80%.</p></div></details>
+      <details><summary>Sou iniciante. Vou conseguir?<span class="pm"></span></summary><div class="ans"><p>Vai. O risco já vem pronto e a Aula Exclusiva dos 6 pontos vem de bônus nos dois pacotes.</p></div></details>
+      <details><summary>Serve para máquina de bordar?<span class="pm"></span></summary><div class="ans"><p>Não é matriz de máquina (.PES, .DST). É risco para bordado à mão. Se você digitaliza, pode usar a imagem como base.</p></div></details>
+      <details><summary>Posso vender o que eu bordar?<span class="pm"></span></summary><div class="ans"><p>Pode, sem limite. Só não pode repassar os arquivos.</p></div></details>
+      <details><summary>E se eu não gostar?<span class="pm"></span></summary><div class="ans"><p>Você tem 7 dias de garantia pela Hotmart.</p></div></details>
+    </div>
+    <div class="fecho rv" style="transition-delay: 70ms;">
+      <a href="#comprar" class="btn lg" data-cta="fecho">Quero os 100 riscos <span class="arw">→</span></a>
+      <p class="micro">+ 2 bônus grátis <b>·</b> Pix ou cartão <b>·</b> 7 dias de garantia</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="images/logo-alencar-arte.webp" alt="Alencar Arte" width="583" height="244" loading="lazy" decoding="async" style="filter:brightness(0) invert(95%) sepia(9%) saturate(251%) hue-rotate(8deg);">
+    <p style="color:#C9B8A6">Alencar Arte · Fernanda Alencar · Uberlândia, MG · Bordado à mão e riscos autorais</p>
+    <p class="legal">Produto digital. Os riscos são autorais e de uso pessoal da compradora. As peças bordadas a partir deles podem ser vendidas livremente. A revenda ou distribuição do arquivo não é permitida.</p>
+    <p class="legal">As imagens sacras seguem a iconografia tradicional de domínio público, redesenhadas para bordado à mão.</p>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
+const nav=document.getElementById('nav'),ann=document.querySelector('.ann');
+const tc=document.getElementById('tc');
+const marcaStuck=()=>{const st=scrollY>=ann.offsetHeight-1;nav.classList.toggle('stuck',st);document.documentElement.classList.toggle('stuck',st);
+  const cor=st?'#F4EDE2':'#231208';if(tc.content!==cor)tc.content=cor};
+addEventListener('scroll',marcaStuck,{passive:true});marcaStuck();
+// galeria: a seta desliza 1 foto, suave, e o snap encaixa pela borda; no começo/fim a seta daquele lado apaga
+(()=>{
+  const g=document.querySelector('.gal'),bs=[...document.querySelectorAll('.gnav')];
+  if(!g||!bs.length) return;
+  const reduz=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const passo=()=>{const f=g.querySelector('figure');const gap=parseFloat(getComputedStyle(g).columnGap)||0;return f.getBoundingClientRect().width+gap};
+  const estado=()=>{const max=g.scrollWidth-g.clientWidth;bs.forEach(b=>{b.disabled=Number(b.dataset.dir)>0?g.scrollLeft>=max-2:g.scrollLeft<=2})};
+  bs.forEach(b=>b.addEventListener('click',()=>g.scrollBy({left:Number(b.dataset.dir)*passo(),behavior:reduz?'instant':'smooth'})));
+  let raf=0;
+  g.addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(estado)},{passive:true});
+  addEventListener('resize',estado);estado();
+  // as 8 fotos (~1 MB) só começam a baixar quando a página termina de carregar: no 4G elas dividiam a
+  // rede com o pixel e a foto do topo (o Chrome puxa "lazy" até 2.500 px abaixo da tela). Se a pessoa
+  // chegar na galeria antes disso, baixam na hora.
+  const fotos=[...g.querySelectorAll('img[data-src]')];
+  const solta=()=>{fotos.forEach(i=>{if(i.dataset.src){i.src=i.dataset.src;i.removeAttribute('data-src')}})};
+  const vista=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){solta();vista.disconnect()}});vista.observe(g);
+  if(document.readyState==='complete')solta();else addEventListener('load',solta,{once:true});
+})();
+document.querySelectorAll('.faq details').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)document.querySelectorAll('.faq details').forEach(o=>{if(o!==d)o.open=false})}));
+// Os cards têm quantidades diferentes de itens; a altura segue o conteúdo.
+// com os cards na tela, o "Ver pacotes" do topo some
+new IntersectionObserver(es=>es.forEach(e=>nav.classList.toggle('nos-planos',e.isIntersecting)),{rootMargin:'-20% 0px -30% 0px'}).observe(document.getElementById('comprar'));
+</script>
+
+<!-- Meta Pixel sem JavaScript (o pixel com JS fica no topo do <head>) -->
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1631923811324377&ev=PageView&noscript=1"></noscript>
+
+
+<!-- ===== Google Analytics 4 — Alencar Arte (G-XB2NT9W5Y9) =====
+     Um ID só para a marca inteira (propriedade "Site Principal"): o www e
+     todas as LPs são subdomínios de rabeloarte.com.br, então quem pula de uma
+     página para outra continua sendo a MESMA pessoa no relatório e as listas
+     de remarketing somam. O que separa cada site é o parâmetro `site`, que vai
+     junto em todo evento e está registrado como dimensão personalizada.
+     A ida para a Hotmart sai como begin_checkout com o item e a posição do
+     botão; a compra em si é contada pelo pixel do GA4 na própria Hotmart,
+     para não contar duas vezes. -->
+<script>
+(function(){
+  // gtag.js (com o do Google Ads, ~330 KB) só desce quando a página termina de carregar: antes ele
+  // dividia a rede com o pixel e a foto do topo. Até lá os eventos esperam na fila do dataLayer.
+  function carrega(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-XB2NT9W5Y9';document.head.appendChild(s)}
+  if(document.readyState==='complete')carrega();else addEventListener('load',carrega,{once:true});
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments)}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  // O linker carimba `_gl` nos links da Hotmart: leva o cookie do GA4 e o
+  // clique do Google Ads para o checkout, onde a compra é contada.
+  gtag('set','linker',{domains:['wiapy.com']});
+  gtag('config','G-XB2NT9W5Y9',{site:'riscos',produto:'100 Riscos Catolicos'});  // `site` no config: pelo gtag('set') não chegava ao GA4 (28/09/2026)
+  // Google Ads (conta Alencar Arte 202-879-1842). A conversão "Compra Hotmart"
+  // dispara na Hotmart; aqui fica só o clique para o checkout (secundária).
+  gtag('config','AW-18470243599');
+
+  var PRECO=function(){return 27};  // Essencial; o Completo (R$ 97) sai pelo data-plano
+  var MOEDA=function(){return 'BRL'};
+  function item(){return {item_id:'RISCOS-CATOLICOS',item_name:'100 Riscos Católicos',item_brand:'Alencar Arte',
+    item_category:'riscos-digitais',price:PRECO(),currency:MOEDA(),quantity:1}}
+
+  gtag('event','view_item',{currency:MOEDA(),value:PRECO(),items:[item()]});
+
+  // Delegado no documento e na fase de captura: alguns CTAs só ganham o href da
+  // Hotmart depois que o script da página roda, então não dá para amarrar o
+  // ouvinte em cada <a> na carga.
+  document.addEventListener('click',function(ev){
+    var a=ev.target&&ev.target.closest?ev.target.closest('a[href*="pay.wiapy.com"]'):null;
+    if(!a) return;
+    var posicao='sem-src';
+    try{posicao=new URL(a.href,location.href).searchParams.get('src')||a.dataset.cta||posicao}catch(e){}
+    var v=a.dataset.plano==='completo'?97:PRECO();
+    gtag('event','begin_checkout',{currency:MOEDA(),value:v,posicao:posicao,plano:a.dataset.plano||'essencial',items:[Object.assign(item(),{price:v})]});
+    gtag('event','conversion',{send_to:'AW-18470243599/1_ZrCIKi0YIdEI-apudE',transport_type:'beacon'});
+  },true);
+
+  // hero, topo e fim descem para os planos: conta de qual botão a pessoa foi escolher
+  document.addEventListener('click',function(ev){
+    var a=ev.target&&ev.target.closest?ev.target.closest('a[href="#comprar"]'):null;
+    if(a) gtag('event','ver_planos',{posicao:a.dataset.cta||'sem-cta'});
+  },true);
+
+  // todo botão que desce para os planos (menu, hero, meio, fim) para com o título "Escolha o pacote ideal"
+  // logo abaixo do menu fixo e os 2 cards à vista. A conta usa a seção + o respiro dela (o título tem
+  // animação de entrada e ainda pode estar deslocado no clique) e confere de novo quando a rolagem termina.
+  (function(){
+    var sec=document.getElementById('comprar'),nav=document.getElementById('nav');
+    if(!sec) return;
+    var reduz=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function destino(){
+      var menu=nav?nav.getBoundingClientRect().height+(parseFloat(getComputedStyle(nav).top)||0):0;
+      var folga=innerWidth<980?18:28;
+      var titulo=sec.getBoundingClientRect().top+scrollY+(parseFloat(getComputedStyle(sec).paddingTop)||0);
+      return Math.max(0,Math.round(titulo-menu-folga));
+    }
+    document.addEventListener('click',function(ev){
+      var a=ev.target&&ev.target.closest?ev.target.closest('a[href="#comprar"]'):null;
+      if(!a||ev.defaultPrevented||ev.button||ev.metaKey||ev.ctrlKey||ev.shiftKey||ev.altKey) return;
+      ev.preventDefault();
+      window.scrollTo({top:destino(),behavior:reduz?'instant':'smooth'});
+      if(history.replaceState) history.replaceState(null,'','#comprar');
+      var feito=false;
+      function confere(){ if(feito) return; feito=true; var y=destino(); if(Math.abs(scrollY-y)>2) window.scrollTo({top:y,behavior:'instant'}); }
+      if('onscrollend' in window) addEventListener('scrollend',confere,{once:true});
+      setTimeout(confere,1400);
+    });
+    if(location.hash==='#comprar') addEventListener('load',function(){ window.scrollTo({top:destino(),behavior:'instant'}); });
+  })();
+})();
+</script>
+
+
+<!-- ===== Origem da visita -> sck da Hotmart + registro próprio =====
+     O `src` já diz de QUAL BOTÃO da página o clique saiu. Este bloco cuida do
+     outro lado: de ONDE a pessoa veio (anúncio, WhatsApp, e-mail, Google,
+     Instagram). São duas coisas ao mesmo tempo:
+
+     1. carimba todo link de checkout com `sck=fonte_meio_campanha_conteudo_v<id>`
+        e `xcod=<id>` — o que a Hotmart devolve no webhook;
+     2. registra a visita inteira no NOSSO servidor (UTM completa, fbclid,
+        gclid, referência, página), guardada pelo mesmo `<id>`.
+
+     Assim a venda é reconstruída por aqui mesmo: o sck sozinho já diz o canal,
+     e o id abre o resto (qual anúncio, qual lote de WhatsApp, qual passo da
+     régua de e-mail). Sem UTM, cai para fbclid/gclid, depois referência,
+     depois "direto" — nunca fica em branco. -->
+<script>
+(function(){
+  var API='https://rabelo-emails-rf-digital.vercel.app/api/visita';
+  var K_ORIGEM='ra_origem', K_ID='ra_visita';
+  function limpa(v,max){return String(v||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,max||28)}
+  function novoId(){return (Date.now().toString(36)+Math.random().toString(36).slice(2)).replace(/[^a-z0-9]/g,'').slice(-6)}
+  var q=new URLSearchParams(location.search);
+  function p(n){return q.get(n)||''}
+
+  // Rede pelo endereço da referência: o Instagram e o Facebook entregam o clique
+  // por l.instagram.com, lm.facebook.com etc., que antes viravam a origem "l".
+  function rede(h){
+    if(/(^|\.)instagram\.com$/.test(h)) return 'instagram';
+    if(/(^|\.)(facebook\.com|fb\.com|fb\.me|messenger\.com)$/.test(h)) return 'facebook';
+    return h.replace(/^(l|lm|m|mobile)\./,'').split('.')[0];
+  }
+
+  function origemDaURL(){
+    var s=p('utm_source'),m=p('utm_medium'),c=p('utm_campaign'),ct=p('utm_content');
+    if(!s&&!m&&!c){
+      var h='';
+      try{if(document.referrer)h=new URL(document.referrer).hostname.replace(/^www\./,'')}catch(e){}
+      if(p('gclid')){s='google';m='cpc'}
+      else if(p('ttclid')){s='tiktok';m='paid'}
+      // Todo anúncio da conta sai com UTM (utm_medium=paid). O Meta põe fbclid em
+      // qualquer clique que deixa o app (perfil, story, direct), então fbclid sem
+      // UTM é clique orgânico e nunca meta_paid (5 vendas assim em 24–25/09/2026).
+      else if(p('fbclid')){s=h&&h!==location.hostname?rede(h):'social';m='organico'}
+      else if(h){
+        if(h===location.hostname) return null;      // navegação interna não troca a origem
+        s=rede(h);m='referencia';
+      }
+      else{s='direto';m='direto'}
+    }
+    return [limpa(s)||'na',limpa(m)||'na',limpa(c)||'na',limpa(ct)||'na'].join('_').slice(0,80);
+  }
+
+  var guardado=function(k){try{return sessionStorage.getItem(k)||''}catch(e){return ''}};
+  var guardar=function(k,v){try{sessionStorage.setItem(k,v)}catch(e){}};
+
+  // Clique do Google Ads (gclid; no iPhone pode vir gbraid/wbraid). Vai junto no
+  // link do checkout para a tag de compra do Google Ads, que roda na Hotmart,
+  // achar o anúncio mesmo quando o cookie não atravessa o domínio.
+  var CLIQUES=['gclid','gbraid','wbraid'];
+  CLIQUES.forEach(function(n){if(p(n))guardar('ra_'+n,p(n))});
+
+  var temMarca=p('utm_source')||p('utm_medium')||p('utm_campaign')||p('fbclid')||p('gclid')||p('ttclid');
+  var origem=guardado(K_ORIGEM), id=guardado(K_ID), nova=false;
+
+  // Sessão nova, ou a pessoa voltou por outro caminho (clicou num anúncio depois
+  // de já ter entrado): origem e id se renovam juntos, senão a segunda visita
+  // apareceria com a origem da primeira.
+  if(temMarca||!origem||!id){
+    var calc=origemDaURL();
+    if(calc){origem=calc;id=novoId();nova=true;guardar(K_ORIGEM,origem);guardar(K_ID,id)}
+  }
+  if(!origem||!id) return;
+  var sck=(origem+'_v'+id).slice(0,100);
+  window.__raOrigem=sck; window.__raVisita=id;
+
+  if(nova){
+    var visita={id:id,site:location.hostname,pagina:location.pathname,sck:sck,
+      utm_source:p('utm_source'),utm_medium:p('utm_medium'),utm_campaign:p('utm_campaign'),
+      utm_content:p('utm_content'),utm_term:p('utm_term'),
+      fbclid:p('fbclid'),gclid:p('gclid'),ttclid:p('ttclid'),referencia:document.referrer||''};
+    var corpo=JSON.stringify(visita);
+    try{
+      // text/plain de propósito: é o único tipo que o sendBeacon manda para outro
+      // domínio SEM preflight. Com application/json o navegador pede OPTIONS, o
+      // beacon não sabe esperar e a visita some em silêncio (aconteceu aqui).
+      if(!(navigator.sendBeacon&&navigator.sendBeacon(API,new Blob([corpo],{type:'text/plain;charset=UTF-8'}))))
+        fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:corpo,keepalive:true}).catch(function(){});
+    }catch(e){}
+  }
+
+  function marca(a){
+    try{
+      var u=new URL(a.getAttribute('href'),location.href);
+      if(u.hostname!=='pay.wiapy.com') return;
+      if(!u.searchParams.get('sck')) u.searchParams.set('sck',sck);
+      if(!u.searchParams.get('xcod')) u.searchParams.set('xcod',id);
+      CLIQUES.forEach(function(n){var v=guardado('ra_'+n);if(v&&!u.searchParams.get(n))u.searchParams.set(n,v)});
+      a.setAttribute('href',u.toString());
+    }catch(e){}
+  }
+  function todos(){Array.prototype.forEach.call(document.querySelectorAll('a[href*="pay.wiapy.com"]'),marca)}
+  // Captura no documento: pega até os CTAs que só ganham href depois da carga.
+  document.addEventListener('click',function(ev){
+    var a=ev.target&&ev.target.closest?ev.target.closest('a[href*="pay.wiapy.com"]'):null;
+    if(a) marca(a);
+  },true);
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',todos);else todos();
+})();
+</script>
+
+
+
+</body></html>
